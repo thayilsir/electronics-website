@@ -32,8 +32,10 @@
       align-items: center;
       min-height: 100vh;
       transition: background-color 0.4s ease, color 0.4s ease;
+      padding: 0 15px;
     }
 
+    /* Heading */
     h1 {
       margin: 20px;
       font-size: 2rem;
@@ -41,6 +43,33 @@
       background: linear-gradient(to right, #6dd5fa, #2980b9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Bio / Article section */
+    .bio {
+      max-width: 800px;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--card-border);
+      text-align: justify;
+      font-family: 'Georgia', serif;
+      font-size: 1.05rem;
+      color: var(--text-color);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: popIn 0.8s ease;
+    }
+
+    .bio span {
+      color: #ff4d4d; /* subtle highlight */
+      font-weight: bold;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* Glassmorphism cards */
@@ -62,6 +91,7 @@
       text-align: center;
       font-weight: bold;
       flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .card:hover {
@@ -106,10 +136,13 @@
 
     .modal-content h2 {
       margin-top: 0;
+      font-family: 'Georgia', serif;
+      color: #ff4d4d;
     }
 
     .modal-content p {
       text-align: justify;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .close-btn {
@@ -164,6 +197,9 @@
       h1 {
         font-size: 1.6rem;
       }
+      .bio {
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -176,6 +212,9 @@
       h1 {
         font-size: 1.3rem;
       }
+      .bio {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -183,18 +222,29 @@
   <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
   <h1>Basic Electronics Components</h1>
+
+  <!-- Bio / Article Section -->
+  <div class="bio">
+    <p>
+      Welcome to <span>ElectroGlass</span>! This website was created to provide students and hobbyists with a visually engaging introduction to basic electronics components. 
+      Each card below represents an essential element in electronic circuits, from <span>resistors</span> to <span>fuses</span>. 
+      Click any card to learn <span>why it exists, how it works</span>, and some practical engineering tips. 
+      Our goal is to make learning electronics <span>fun, interactive, and visually smooth</span> while keeping it simple for beginners and informative enough for aspiring engineers.
+    </p>
+  </div>
   
+  <!-- Components Grid -->
   <div class="grid">
     <div class="card" onclick="showModal('Resistor', 'Limits the flow of current in a circuit. Ohm\'s law applies (V=IR). Used for voltage division and current limiting.')">Resistor</div>
     <div class="card" onclick="showModal('Capacitor', 'Stores electrical energy in an electric field. Used for filtering, coupling, timing circuits. Measured in Farads (F).')">Capacitor</div>
     <div class="card" onclick="showModal('Diode', 'Allows current to flow in one direction. Used in rectification, signal demodulation, protection circuits.')">Diode</div>
-    <div class="card" onclick="showModal('Transistor', 'Semiconductor device for amplification and switching. Types include NPN and PNP (BJT), and MOSFETs. Key in digital and analog circuits.')">Transistor</div>
-    <div class="card" onclick="showModal('LED', 'Light Emitting Diode emits light when current flows. Used for indication, displays, lighting. Forward voltage typically 1.8-3.3V.')">LED</div>
-    <div class="card" onclick="showModal('Inductor', 'Stores energy in a magnetic field when current flows. Used in filters, transformers, chokes, and energy storage.')">Inductor</div>
-    <div class="card" onclick="showModal('Battery', 'Supplies electrical energy through chemical reaction. Rated by voltage and capacity (Ah). Commonly Li-ion, lead-acid, or NiMH.')">Battery</div>
-    <div class="card" onclick="showModal('Switch', 'Manually or electronically opens/closes a circuit. Types: SPST, SPDT, toggle, push-button. Used to control flow of current.')">Switch</div>
+    <div class="card" onclick="showModal('Transistor', 'Semiconductor device for amplification and switching. Types include NPN and PNP (BJT), and MOSFETs.')">Transistor</div>
+    <div class="card" onclick="showModal('LED', 'Light Emitting Diode emits light when current flows. Used for indication, displays, lighting.')">LED</div>
+    <div class="card" onclick="showModal('Inductor', 'Stores energy in a magnetic field when current flows. Used in filters, transformers, chokes.')">Inductor</div>
+    <div class="card" onclick="showModal('Battery', 'Supplies electrical energy through chemical reaction. Rated by voltage and capacity (Ah).')">Battery</div>
+    <div class="card" onclick="showModal('Switch', 'Manually or electronically opens/closes a circuit. Types: SPST, SPDT, toggle, push-button.')">Switch</div>
     <div class="card" onclick="showModal('Potentiometer', 'Variable resistor used to adjust voltage in a circuit. Often used for volume control or tuning.')">Potentiometer</div>
-    <div class="card" onclick="showModal('Fuse', 'Protects circuits by breaking current when overload occurs. Rated by current and voltage. Essential for safety.')">Fuse</div>
+    <div class="card" onclick="showModal('Fuse', 'Protects circuits by breaking current when overload occurs. Rated by current and voltage.')">Fuse</div>
   </div>
 
   <!-- Modal -->
