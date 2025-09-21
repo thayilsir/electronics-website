@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electronics Components</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Light & Dark mode variables */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(0,0,0,0.1);
+      --modal-bg: rgba(255, 255, 255, 0.85);
+    }
+    body.dark {
+      --bg-color: #0f2027;
+      --text-color: #fff;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --card-border: rgba(255,255,255,0.2);
+      --modal-bg: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Body */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    h1 {
+      margin: 20px;
+      font-size: 2rem;
+      text-align: center;
+      background: linear-gradient(to right, #6dd5fa, #2980b9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism cards */
+    .card {
+      width: 180px;
+      min-height: 140px;
+      margin: 12px;
+      padding: 15px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      font-weight: bold;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1000px;
+    }
+
+    /* Modal popup */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 10px;
+    }
+
+    .modal-content {
+      background: var(--modal-bg);
+      backdrop-filter: blur(20px);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      color: var(--text-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .modal-content p {
+      text-align: justify;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Dark mode toggle button */
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      color: white;
+      transition: 0.3s;
+      z-index: 1100;
+    }
+
+    .toggle-btn:hover {
+      background: linear-gradient(to right, #ff7eb3, #ff758c);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .card {
+        width: 140px;
+        min-height: 120px;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 120px;
+        min-height: 110px;
+        padding: 8px;
+        font-size: 0.8rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+  <h1>Basic Electronics Components</h1>
+  
+  <div class="grid">
+    <div class="card" onclick="showModal('Resistor', 'Limits the flow of current in a circuit. Ohm\'s law applies (V=IR). Used for voltage division and current limiting.')">Resistor</div>
+    <div class="card" onclick="showModal('Capacitor', 'Stores electrical energy in an electric field. Used for filtering, coupling, timing circuits. Measured in Farads (F).')">Capacitor</div>
+    <div class="card" onclick="showModal('Diode', 'Allows current to flow in one direction. Used in rectification, signal demodulation, protection circuits.')">Diode</div>
+    <div class="card" onclick="showModal('Transistor', 'Semiconductor device for amplification and switching. Types include NPN and PNP (BJT), and MOSFETs. Key in digital and analog circuits.')">Transistor</div>
+    <div class="card" onclick="showModal('LED', 'Light Emitting Diode emits light when current flows. Used for indication, displays, lighting. Forward voltage typically 1.8-3.3V.')">LED</div>
+    <div class="card" onclick="showModal('Inductor', 'Stores energy in a magnetic field when current flows. Used in filters, transformers, chokes, and energy storage.')">Inductor</div>
+    <div class="card" onclick="showModal('Battery', 'Supplies electrical energy through chemical reaction. Rated by voltage and capacity (Ah). Commonly Li-ion, lead-acid, or NiMH.')">Battery</div>
+    <div class="card" onclick="showModal('Switch', 'Manually or electronically opens/closes a circuit. Types: SPST, SPDT, toggle, push-button. Used to control flow of current.')">Switch</div>
+    <div class="card" onclick="showModal('Potentiometer', 'Variable resistor used to adjust voltage in a circuit. Often used for volume control or tuning.')">Potentiometer</div>
+    <div class="card" onclick="showModal('Fuse', 'Protects circuits by breaking current when overload occurs. Rated by current and voltage. Essential for safety.')">Fuse</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Modal functions
+    function showModal(title, text) {
+      document.getElementById("modal-title").innerText = title;
+      document.getElementById("modal-text").innerText = text;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
