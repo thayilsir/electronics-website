@@ -76,7 +76,6 @@ body{
   transition:background 0.3s;
 }
 .sidebar button:hover{background:var(--sidebar-hover);}
-.sidebar button img.icon{width:30px; height:30px;}
 .sidebar.minimized button span{display:none;}
 .toggle-sidebar-btn{
   background:none; border:none; color:var(--text-color);
@@ -172,9 +171,9 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
 <div class="sidebar" id="sidebar">
   <h2>ElectroGlass</h2>
   <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
-  <button onclick="showSection('components')"><img src="images/components-icon.png" class="icon"> <span>Components</span></button>
-  <button onclick="showSection('microcontrollers')"><img src="images/mcu-icon.png" class="icon"> <span>Microcontrollers</span></button>
-  <button onclick="showSection('projects')"><img src="images/projects-icon.png" class="icon"> <span>Easy Projects</span></button>
+  <button onclick="showSection('components')">🔧 <span>Components</span></button>
+  <button onclick="showSection('microcontrollers')">🖥️ <span>Microcontrollers</span></button>
+  <button onclick="showSection('projects')">⚡ <span>Easy Projects</span></button>
 </div>
 
 <!-- Main Content -->
@@ -182,51 +181,9 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
   <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
   <h1>ElectroGlass - Learn Electronics</h1>
 
-  <!-- Components Section -->
-  <div id="components" class="section active">
-    <div class="bio">
-      The <span>Components</span> section introduces essential building blocks of electronics. Each card shows an icon and name. Click to view detailed information and practical tips.
-    </div>
-    <div class="grid">
-      <div class="card" onclick="showModal('Resistor','Resistors limit current in circuits. Ohm\'s law: V=IR. Used for voltage division, current limiting, and biasing in amplifiers.\n\nPractical tip: Always calculate resistor value based on voltage and current.','images/resistor.png')"><img src="images/resistor.png" alt="Resistor Icon"> Resistor</div>
+  <!-- Sections go here: Components, Microcontrollers, Projects -->
+  <!-- Use previous card and modal code here -->
 
-      <div class="card" onclick="showModal('Capacitor','Capacitors store energy in electric fields. Used for filtering, timing, and coupling circuits.\n\nPractical tip: Polarized capacitors must be connected correctly.','images/capacitor.png')"><img src="images/capacitor.png" alt="Capacitor Icon"> Capacitor</div>
-
-      <div class="card" onclick="showModal('Diode','Diodes allow current in one direction. Used for rectification, signal demodulation, and protection.\n\nPractical tip: Check maximum reverse voltage and forward current ratings.','images/diode.png')"><img src="images/diode.png" alt="Diode Icon"> Diode</div>
-
-      <div class="card" onclick="showModal('Transistor','Transistors amplify or switch current. Types: BJT, MOSFET. Example: audio amplification, digital switching.\n\nPractical tip: Use datasheets for pin configuration and biasing.','images/transistor.png')"><img src="images/transistor.png" alt="Transistor Icon"> Transistor</div>
-
-      <!-- Add more component cards similarly -->
-    </div>
-  </div>
-
-  <!-- Microcontrollers Section -->
-  <div id="microcontrollers" class="section">
-    <div class="bio">
-      The <span>Microcontrollers</span> section covers popular MCUs used in electronics. Click a card to see features, use cases, and why it’s ideal.
-    </div>
-    <div class="grid">
-      <div class="card" onclick="showModal('Arduino Uno','The Arduino Uno is an 8-bit AVR board with 14 digital I/O pins and 6 analog inputs.\n\nFeatures: Easy programming, huge community support.\nBest for: Small DIY projects, sensors, LED control.','images/arduino-uno.png')"><img src="images/arduino-uno.png" alt="Arduino Uno Icon"> Arduino Uno</div>
-
-      <div class="card" onclick="showModal('ESP32','ESP32 is a dual-core WiFi/Bluetooth microcontroller.\n\nFeatures: WiFi, Bluetooth, high processing speed.\nBest for: IoT devices, wireless projects, sensors.','images/esp32.png')"><img src="images/esp32.png" alt="ESP32 Icon"> ESP32</div>
-
-      <!-- Add remaining 8 MCUs similarly -->
-    </div>
-  </div>
-
-  <!-- Projects Section -->
-  <div id="projects" class="section">
-    <div class="bio">
-      The <span>Easy Projects</span> section provides step-by-step beginner projects. Click a card to see components, steps, and outcome.
-    </div>
-    <div class="grid">
-      <div class="card" onclick="showModal('LED Blinking','Components: 1 LED, 1 Resistor (220Ω), Arduino, Jumper wires, Breadboard.\n\nSteps: Connect LED with resistor. Write program to blink LED. Upload and test.\n\nOutcome: LED blinks repeatedly, demonstrating digital output control.','images/led-blinking.png')"><img src="images/led-blinking.png" alt="LED Blinking Icon"> LED Blinking</div>
-
-      <div class="card" onclick="showModal('Traffic Light','Components: 3 LEDs (Red, Yellow, Green), Arduino, Resistors, Breadboard.\n\nSteps: Connect LEDs to Arduino pins. Write program to simulate traffic light. Upload and test.\n\nOutcome: LEDs simulate traffic light operation.','images/traffic-light.png')"><img src="images/traffic-light.png" alt="Traffic Light Icon"> Traffic Light</div>
-
-      <!-- Add remaining 8 projects similarly -->
-    </div>
-  </div>
 </div>
 
 <!-- Modal -->
