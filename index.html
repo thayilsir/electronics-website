@@ -2,226 +2,170 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ElectroGlass - Components</title>
+<title>ElectroGlass - Full Site</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg-gradient: linear-gradient(135deg,#f6d365,#fda085,#ff758c,#ff7eb3);
-  --text-color:#111;
-  --card-bg: rgba(255,255,255,0.2);
-  --card-border: rgba(255,255,255,0.3);
-  --modal-bg: rgba(255,255,255,0.85);
-  --highlight: #ff4d4d;
-  --sidebar-bg: rgba(255,255,255,0.2);
-  --sidebar-hover: rgba(255,255,255,0.4);
-}
-body.dark{
-  --bg-gradient: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  --text-color:#fff;
-  --card-bg: rgba(255,255,255,0.1);
-  --card-border: rgba(255,255,255,0.2);
-  --modal-bg: rgba(255,255,255,0.15);
-  --highlight: #ff758c;
-  --sidebar-bg: rgba(255,255,255,0.1);
-  --sidebar-hover: rgba(255,255,255,0.2);
-}
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background: var(--bg-gradient);
-  background-size:400% 400%;
-  animation: gradientBG 15s ease infinite;
-  color: var(--text-color);
-  display:flex;
-  min-height:100vh;
-  transition: color 0.4s ease;
-}
-@keyframes gradientBG{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* Sidebar */
-.sidebar{
-  width:220px;
-  transition:width 0.3s ease;
-  overflow:hidden;
-  background:var(--sidebar-bg);
-  backdrop-filter: blur(15px);
-  border-right:1px solid var(--card-border);
-  display:flex;
-  flex-direction:column;
-  padding:20px;
-  box-shadow:3px 0 10px rgba(0,0,0,0.2);
-  min-height:100vh;
-}
+/* --- Shared styles --- */
+:root{--bg-gradient:linear-gradient(135deg,#f6d365,#fda085,#ff758c,#ff7eb3);--text-color:#111;--card-bg:rgba(255,255,255,0.2);--card-border:rgba(255,255,255,0.3);--modal-bg:rgba(255,255,255,0.85);--highlight:#ff4d4d;--sidebar-bg:rgba(255,255,255,0.2);--sidebar-hover:rgba(255,255,255,0.4);}
+body.dark{--bg-gradient:linear-gradient(135deg,#0f2027,#203a43,#2c5364);--text-color:#fff;--card-bg:rgba(255,255,255,0.1);--card-border:rgba(255,255,255,0.2);--modal-bg:rgba(255,255,255,0.15);--highlight:#ff758c;--sidebar-bg:rgba(255,255,255,0.1);--sidebar-hover:rgba(255,255,255,0.2);}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg-gradient);background-size:400% 400%;animation:gradientBG 15s ease infinite;color:var(--text-color);display:flex;min-height:100vh;transition: color 0.4s ease;}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.sidebar{width:220px;transition:width 0.3s ease;overflow:hidden;background:var(--sidebar-bg);backdrop-filter: blur(15px);border-right:1px solid var(--card-border);display:flex;flex-direction:column;padding:20px;box-shadow:3px 0 10px rgba(0,0,0,0.2);min-height:100vh;}
 .sidebar.minimized{width:70px;}
 .sidebar h2{white-space: nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; color:var(--highlight);}
-.sidebar button{
-  width:100%;
-  font-size:1.2rem;
-  padding:15px 10px;
-  text-align:left;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
-  background:none;
-  color:var(--text-color);
-  transition:background 0.3s;
-}
+.sidebar button{width:100%;font-size:1.2rem;padding:15px 10px;text-align:left;display:flex;align-items:center;gap:10px;margin-bottom:10px;border:none;border-radius:12px;cursor:pointer;background:none;color:var(--text-color);transition:background 0.3s;}
 .sidebar button:hover{background:var(--sidebar-hover);}
 .sidebar.minimized button span{display:none;}
-.toggle-sidebar-btn{
-  background:none; border:none; color:var(--text-color);
-  font-size:1.5rem; cursor:pointer; margin-bottom:15px;
-}
-
-/* Main */
-.main{
-  flex:1;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
+.toggle-sidebar-btn{background:none;border:none;color:var(--text-color);font-size:1.5rem;cursor:pointer;margin-bottom:15px;}
+.main{flex:1;padding:20px;display:flex;flex-direction:column;align-items:center;}
 h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10px rgba(255,255,255,0.7);}
-
-/* Bio */
-.bio{
-  max-width:900px;
-  padding:20px;
-  margin-bottom:30px;
-  border-radius:25px;
-  background:var(--card-bg);
-  backdrop-filter: blur(20px);
-  border:1px solid var(--card-border);
-  font-size:1rem;
-  font-weight:500;
-  box-shadow:0 10px 30px rgba(0,0,0,0.25);
-}
+.bio{max-width:900px;padding:20px;margin-bottom:30px;border-radius:25px;background:var(--card-bg);backdrop-filter: blur(20px);border:1px solid var(--card-border);font-size:1rem;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,0.25);}
 .bio span{font-weight:700;background:linear-gradient(to right,#ff758c,#ff7eb3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-/* Grid & Cards */
-.grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-  max-width:1200px;
-}
-.card{
-  width:200px;
-  min-height:250px;
-  border-radius:20px;
-  background:var(--card-bg);
-  backdrop-filter: blur(20px);
-  border:1px solid var(--card-border);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  transition:transform 0.4s ease,box-shadow 0.4s ease, background 0.4s ease;
-  text-align:center;
-  font-weight:600;
-  font-family:'Inter',sans-serif;
-  color:#fff;
-  padding:15px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.3);
-}
-.card img{width:60px; margin-bottom:10px;}
-.card:hover{transform:translateY(-10px) scale(1.08); box-shadow:0 15px 30px rgba(0,0,0,0.45); background:linear-gradient(135deg,#ff758c,#ff7eb3);}
-
-/* Modal */
-.modal{
-  position: fixed; top:0; left:0; width:100%; height:100%; display:none; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; padding:10px;
-}
-.modal-content{
-  background:var(--modal-bg); backdrop-filter: blur(25px); padding:30px; border-radius:25px; max-width:600px; width:100%; text-align:left; color:var(--text-color); box-shadow:0 15px 40px rgba(0,0,0,0.5); animation:fadeIn 0.5s ease;
-}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;max-width:1200px;}
+.card{width:200px;min-height:250px;border-radius:20px;background:var(--card-bg);backdrop-filter: blur(20px);border:1px solid var(--card-border);display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;transition:transform 0.4s ease,box-shadow 0.4s ease, background 0.4s ease;text-align:center;font-weight:600;font-family:'Inter',sans-serif;color:#fff;padding:15px;box-shadow:0 8px 25px rgba(0,0,0,0.3);}
+.card img{width:60px;margin-bottom:10px;}
+.card:hover{transform:translateY(-10px) scale(1.08);box-shadow:0 15px 30px rgba(0,0,0,0.45);background:linear-gradient(135deg,#ff758c,#ff7eb3);}
+.modal{position: fixed; top:0; left:0; width:100%; height:100%; display:none; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; padding:10px;}
+.modal-content{background:var(--modal-bg); backdrop-filter: blur(25px); padding:30px; border-radius:25px; max-width:600px; width:100%; text-align:left; color:var(--text-color); box-shadow:0 15px 40px rgba(0,0,0,0.5); animation:fadeIn 0.5s ease;}
 .modal-content h2{ font-family:'Poppins',sans-serif; color:var(--highlight);}
 .modal-content p{ font-family:'Inter',sans-serif; margin-bottom:15px; text-align:justify;}
 .modal-content img{width:150px; display:block; margin:10px auto;}
 .close-btn{ margin-top:20px; padding:10px 20px; border-radius:15px; border:none; cursor:pointer; font-weight:bold; background:linear-gradient(to right,#00c6ff,#0072ff); color:#fff; transition:0.3s;}
 .close-btn:hover{background:linear-gradient(to right,#0072ff,#00c6ff);}
 @keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
-
-/* Dark mode toggle */
 .toggle-btn{position:fixed; top:20px; right:20px; padding:12px 20px; border-radius:15px; border:none; cursor:pointer; font-weight:bold; background: linear-gradient(to right, #ff758c, #ff7eb3); color:#fff; z-index:1100; transition:0.3s;}
 .toggle-btn:hover{background:linear-gradient(to right,#ff7eb3,#ff758c);}
-
-/* Responsive */
 @media(max-width:768px){.sidebar{width:150px;padding:15px;} .card{width:160px; min-height:220px; font-size:0.95rem;} .bio{font-size:0.95rem;} h1{font-size:1.8rem;}}
 @media(max-width:480px){.sidebar{width:120px;padding:10px;} .card{width:140px; min-height:200px; font-size:0.85rem;} .bio{font-size:0.9rem;} h1{font-size:1.5rem;}}
 </style>
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-  <h2>ElectroGlass</h2>
-  <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
-  <button onclick="location.href='components.html'">🔧 <span>Components</span></button>
-  <button onclick="location.href='microcontrollers.html'">🖥️ <span>Microcontrollers</span></button>
-  <button onclick="location.href='projects.html'">⚡ <span>Easy Projects</span></button>
+<h2>ElectroGlass</h2>
+<button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
+<button onclick="showPage('components')">🔧 <span>Components</span></button>
+<button onclick="showPage('microcontrollers')">🖥️ <span>Microcontrollers</span></button>
+<button onclick="showPage('projects')">⚡ <span>Easy Projects</span></button>
 </div>
 
-<!-- Main -->
 <div class="main">
 <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+<!-- COMPONENTS PAGE -->
+<div class="page" id="components">
 <h1>Components</h1>
-<div class="bio">
-  Welcome to the Components page! Here you will find 10 essential electronic components with detailed explanations. Each card has an emoji and PNG icon for easy recognition. Click a card to learn more with 3–4 paragraphs covering features, applications, and practical tips.
-</div>
-
+<div class="bio">Explore 10 essential electronic components. Each card shows 3–4 paragraphs explaining features, applications, and practical tips.</div>
 <div class="grid">
-  <!-- Example Card 1 -->
-  <div class="card" onclick="showModal('Resistor','A resistor limits current in circuits. It is fundamental for controlling voltage and current.\\n\\nResistors are rated by resistance in ohms, and tolerances define accuracy.\\n\\nPractical tip: Always choose resistor values based on your circuit needs.','images/resistor.png')">
-    <span>🔹</span>
-    <img src="images/resistor.png" alt="Resistor">
-    Resistor
-  </div>
+<!-- 10 component cards with emoji + PNG + 3-4 paragraph text -->
+<!-- Card 1: Resistor -->
+<div class="card" onclick="showModal('Resistor','Resistor limits current in circuits.\n\nThey come in various types: carbon film, metal film, wirewound.\n\nUsed for voltage division and biasing.\n\nPractical tip: Always calculate voltage and current before choosing resistor.','images/resistor.png')">🔹<img src="images/resistor.png" alt="Resistor">Resistor</div>
+<!-- Card 2: Capacitor -->
+<div class="card" onclick="showModal('Capacitor','Capacitors store electrical energy.\n\nTypes include ceramic, electrolytic, film, and tantalum.\n\nUsed in filtering, coupling, timing, and energy storage.\n\nPractical tip: Mind polarity for electrolytics.','images/capacitor.png')">⚡<img src="images/capacitor.png" alt="Capacitor">Capacitor</div>
+<!-- Card 3: Diode -->
+<div class="card" onclick="showModal('Diode','Diodes allow current in one direction.\n\nUsed in rectification, voltage regulation, protection.\n\nTypes: Standard, Zener, Schottky, LED.\n\nPractical tip: Respect max reverse voltage rating.','images/diode.png')">💡<img src="images/diode.png" alt="Diode">Diode</div>
+<!-- Card 4: Transistor -->
+<div class="card" onclick="showModal('Transistor','Transistors amplify or switch current.\n\nTypes: BJT, MOSFET, JFET.\n\nUsed in amplification, switching, digital logic.\n\nPractical tip: Always refer datasheet for pinout and biasing.','images/transistor.png')">🔺<img src="images/transistor.png" alt="Transistor">Transistor</div>
+<!-- Card 5: Inductor -->
+<div class="card" onclick="showModal('Inductor','Inductors store energy in magnetic field.\n\nTypes: Air core, iron core.\n\nUsed in filters, transformers, oscillators.\n\nPractical tip: Avoid exceeding current rating to prevent saturation.','images/inductor.png')">🌀<img src="images/inductor.png" alt="Inductor">Inductor</div>
+<!-- Card 6: LED -->
+<div class="card" onclick="showModal('LED','LED emits light when current flows.\n\nTypes: Standard, RGB, High-power.\n\nUsed for indicators, displays, illumination.\n\nPractical tip: Always use series resistor to limit current.','images/led.png')">💡<img src="images/led.png" alt="LED">LED</div>
+<!-- Card 7: Switch -->
+<div class="card" onclick="showModal('Switch','Switches control current manually.\n\nTypes: Toggle, Push-button, Slide, DIP.\n\nUsed for on/off control or selection.\n\nPractical tip: Ensure current rating exceeds load.','images/switch.png')">🛑<img src="images/switch.png" alt="Switch">Switch</div>
+<!-- Card 8: Potentiometer -->
+<div class="card" onclick="showModal('Potentiometer','Variable resistor for adjusting voltage.\n\nUsed in volume control, brightness, sensor calibration.\n\nTypes: Rotary, Slide.\n\nPractical tip: Check power rating to avoid overheating.','images/potentiometer.png')">🎚️<img src="images/potentiometer.png" alt="Potentiometer">Potentiometer</div>
+<!-- Card 9: Relay -->
+<div class="card" onclick="showModal('Relay','Electromechanical switch activated by current.\n\nTypes: SPDT, DPDT, Solid-state.\n\nUsed for switching high power with low power control.\n\nPractical tip: Use diode across coil to prevent back EMF.','images/relay.png')">🔁<img src="images/relay.png" alt="Relay">Relay</div>
+<!-- Card 10: IC -->
+<div class="card" onclick="showModal('IC','Integrated Circuit packs multiple components in one chip.\n\nTypes: Linear, Digital, Mixed-signal.\n\nUsed in amplifiers, timers, microcontrollers.\n\nPractical tip: Check pinout & voltage rating.','images/ic.png')">💻<img src="images/ic.png" alt="IC">IC</div>
+</div>
+</div>
 
-  <!-- Example Card 2 -->
-  <div class="card" onclick="showModal('Capacitor','Capacitors store energy in an electric field and are used in filtering, timing, and coupling.\\n\\nThey come in different types: ceramic, electrolytic, film, and more.\\n\\nPractical tip: Pay attention to polarity for electrolytic capacitors.','images/capacitor.png')">
-    <span>⚡</span>
-    <img src="images/capacitor.png" alt="Capacitor">
-    Capacitor
-  </div>
+<!-- MICROCONTROLLERS PAGE -->
+<div class="page" id="microcontrollers" style="display:none;">
+<h1>Microcontrollers</h1>
+<div class="bio">10 microcontrollers explained with features, applications, and why they are best suited for certain projects.</div>
+<div class="grid">
+<!-- Card 1: Arduino Uno -->
+<div class="card" onclick="showModal('Arduino Uno','Arduino Uno is popular MCU for beginners.\n\nATmega328P, easy to program.\n\nIdeal for sensors, LEDs, small projects.\n\nAffordable and widely supported.','images/arduino.png')">🤖<img src="images/arduino.png" alt="Arduino Uno">Arduino Uno</div>
+<!-- Card 2: ESP32 -->
+<div class="card" onclick="showModal('ESP32','ESP32 is dual-core MCU with WiFi & Bluetooth.\n\nSupports high-speed operations.\n\nGreat for IoT & wireless projects.\n\nPowerful yet cost-effective.','images/esp32.png')">🌐<img src="images/esp32.png" alt="ESP32">ESP32</div>
+<!-- Card 3: Raspberry Pi Pico -->
+<div class="card" onclick="showModal('Raspberry Pi Pico','RP2040 microcontroller board.\n\nDual-core ARM Cortex M0+.\n\nGreat for embedded projects, sensors, robotics.\n\nAffordable and versatile.','images/pico.png')">🍓<img src="images/pico.png" alt="Pico">Raspberry Pi Pico</div>
+<!-- Card 4: ATtiny85 -->
+<div class="card" onclick="showModal('ATtiny85','Small MCU for compact projects.\n\n8-pin microcontroller.\n\nUsed in wearables, small gadgets.\n\nLow power, easy for simple tasks.','images/attiny85.png')">🪙<img src="images/attiny85.png" alt="ATtiny85">ATtiny85</div>
+<!-- Card 5: STM32F103C8T6 -->
+<div class="card" onclick="showModal('STM32F103C8T6','STM32 ARM Cortex M3.\n\nHigh performance, affordable.\n\nUsed in robotics, automation.\n\nSupports complex tasks with ease.','images/stm32.png')">⚙️<img src="images/stm32.png" alt="STM32">STM32F103C8T6</div>
+<!-- Card 6: Teensy 4.0 -->
+<div class="card" onclick="showModal('Teensy 4.0','High-speed MCU, ARM Cortex M7.\n\nFastest Arduino-compatible board.\n\nGreat for audio, robotics, high-speed sensors.\n\nCompact size, very powerful.','images/teensy.png')">🚀<img src="images/teensy.png" alt="Teensy 4.0">Teensy 4.0</div>
+<!-- Card 7: Arduino Mega -->
+<div class="card" onclick="showModal('Arduino Mega','Mega has more pins than Uno.\n\nATmega2560, 54 digital I/O.\n\nIdeal for complex projects needing many I/O.\n\nCompatible with Arduino ecosystem.','images/mega.png')">🖥️<img src="images/mega.png" alt="Arduino Mega">Arduino Mega</div>
+<!-- Card 8: NodeMCU -->
+<div class="card" onclick="showModal('NodeMCU','ESP8266-based MCU with WiFi.\n\nGreat for IoT & web projects.\n\nSmall size, low cost.\n\nEasily programmable with Arduino IDE.','images/nodemcu.png')">📶<img src="images/nodemcu.png" alt="NodeMCU">NodeMCU</div>
+<!-- Card 9: BeagleBone Black -->
+<div class="card" onclick="showModal('BeagleBone Black','Powerful MCU with Linux support.\n\nUsed in advanced robotics, automation.\n\nExtensive I/O and networking.\n\nIdeal for embedded Linux projects.','images/beaglebone.png')">🖧<img src="images/beaglebone.png" alt="BeagleBone Black">BeagleBone Black</div>
+<!-- Card 10: MSP430 -->
+<div class="card" onclick="showModal('MSP430','Low-power MCU for battery projects.\n\n16-bit RISC, efficient.\n\nUsed in sensors, wearables.\n\nExcellent for ultra-low-power applications.','images/msp430.png')">⚡<img src="images/msp430.png" alt="MSP430">MSP430</div>
+</div>
+</div>
 
-  <!-- Add 8 more cards similarly with emoji + PNG + title -->
+<!-- EASY PROJECTS PAGE -->
+<div class="page" id="projects" style="display:none;">
+<h1>Easy Projects</h1>
+<div class="bio">10 beginner-friendly projects with detailed 3–4 paragraph steps, components, and execution guide.</div>
+<div class="grid">
+<!-- Card 1: LED Blinking -->
+<div class="card" onclick="showModal('LED Blinking','Learn to blink an LED.\n\nComponents: LED, resistor, Arduino.\n\nSteps: connect circuit, upload code, watch LED blink.\n\nTeaches basics of digital output.','images/led_project.png')">💡<img src="images/led_project.png" alt="LED Blinking">LED Blinking</div>
+<!-- Card 2: Traffic Light Simulation -->
+<div class="card" onclick="showModal('Traffic Light Simulation','Simulate traffic lights with LEDs.\n\nComponents: 3 LEDs, resistors, Arduino.\n\nSteps: code sequence, connect circuit, observe operation.\n\nTeaches timing and sequencing.','images/traffic_light.png')">🚦<img src="images/traffic_light.png" alt="Traffic Light">Traffic Light</div>
+<!-- Card 3: Temperature Sensor Monitor -->
+<div class="card" onclick="showModal('Temp Sensor Monitor','Read temperature from sensor.\n\nComponents: LM35, Arduino, wires, LCD.\n\nSteps: connect sensor, code, monitor values.\n\nTeaches analog input reading.','images/temp_sensor.png')">🌡️<img src="images/temp_sensor.png" alt="Temp Sensor">Temp Monitor</div>
+<!-- Card 4: Servo Motor Control -->
+<div class="card" onclick="showModal('Servo Motor Control','Control servo position via Arduino.\n\nComponents: Servo, Arduino, wires.\n\nSteps: connect servo, upload code, test movements.\n\nTeaches PWM and motion control.','images/servo.png')">🕹️<img src="images/servo.png" alt="Servo Motor">Servo Control</div>
+<!-- Card 5: LCD Display Hello World -->
+<div class="card" onclick="showModal('LCD Hello World','Display text on LCD.\n\nComponents: 16x2 LCD, Arduino, potentiometer.\n\nSteps: wire LCD, upload code, adjust contrast.\n\nTeaches basic output display.','images/lcd.png')">📟<img src="images/lcd.png" alt="LCD">LCD Display</div>
+<!-- Card 6: Buzzer Alarm -->
+<div class="card" onclick="showModal('Buzzer Alarm','Make buzzer beep.\n\nComponents: Buzzer, Arduino, resistor.\n\nSteps: connect, upload code, hear sound.\n\nTeaches digital output & sound generation.','images/buzzer.png')">🔔<img src="images/buzzer.png" alt="Buzzer">Buzzer Alarm</div>
+<!-- Card 7: Push Button Counter -->
+<div class="card" onclick="showModal('Button Counter','Count button presses.\n\nComponents: Push button, Arduino, resistor, LED.\n\nSteps: code counting logic, connect circuit, press button.\n\nTeaches input reading & logic.','images/button_counter.png')">🖲️<img src="images/button_counter.png" alt="Button Counter">Button Counter</div>
+<!-- Card 8: Light Sensitive LED -->
+<div class="card" onclick="showModal('Light Sensitive LED','LED reacts to light.\n\nComponents: LDR, resistor, LED, Arduino.\n\nSteps: wire LDR, code, test in light/dark.\n\nTeaches analog input & conditional output.','images/ldr.png')">💡<img src="images/ldr.png" alt="LDR LED">LDR LED</div>
+<!-- Card 9: Motor Speed Control -->
+<div class="card" onclick="showModal('Motor Speed Control','Control DC motor speed.\n\nComponents: DC motor, Arduino, PWM.\n\nSteps: connect motor driver, code PWM, adjust speed.\n\nTeaches PWM & motor control.','images/motor.png')">⚙️<img src="images/motor.png" alt="Motor Speed Control">Motor Speed</div>
+<!-- Card 10: Temperature-controlled Fan -->
+<div class="card" onclick="showModal('Temp-controlled Fan','Fan reacts to temperature.\n\nComponents: Fan, LM35, Arduino, transistor.\n\nSteps: wire circuit, code sensor logic, test.\n\nTeaches control & automation.','images/temp_fan.png')">🌬️<img src="images/temp_fan.png" alt="Temp Fan">Temp Fan</div>
+
+</div>
 </div>
 
 </div>
 
-<!-- Modal -->
 <div class="modal" id="modal">
-  <div class="modal-content">
-    <h2 id="modal-title"></h2>
-    <img id="modal-img" src="" alt="">
-    <p id="modal-text"></p>
-    <button class="close-btn" onclick="closeModal()">Close</button>
-  </div>
+<div class="modal-content">
+<h2 id="modal-title"></h2>
+<img id="modal-img" src="" alt="">
+<p id="modal-text"></p>
+<button class="close-btn" onclick="closeModal()">Close</button>
+</div>
 </div>
 
 <script>
 function showModal(title,text,imgSrc){
-  document.getElementById('modal-title').innerText=title;
-  document.getElementById('modal-text').innerText=text.replace(/\\n/g,'\n\n');
-  const modalImg=document.getElementById('modal-img');
-  if(imgSrc){ modalImg.src=imgSrc; modalImg.style.display='block'; }
-  else{ modalImg.style.display='none'; }
-  document.getElementById('modal').style.display='flex';
+document.getElementById('modal-title').innerText=title;
+document.getElementById('modal-text').innerText=text.replace(/\\n/g,'\n\n');
+const modalImg=document.getElementById('modal-img');
+if(imgSrc){ modalImg.src=imgSrc; modalImg.style.display='block'; }else{ modalImg.style.display='none'; }
+document.getElementById('modal').style.display='flex';
 }
 function closeModal(){document.getElementById('modal').style.display='none';}
 function toggleDarkMode(){document.body.classList.toggle('dark');}
 function toggleSidebar(){document.getElementById('sidebar').classList.toggle('minimized');}
+function showPage(pageId){
+document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+document.getElementById(pageId).style.display='block';
+}
 </script>
+
 </body>
 </html>
