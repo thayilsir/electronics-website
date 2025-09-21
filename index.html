@@ -1,240 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ElectroGlass - Modern Electronics</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Light & Dark mode variables */
-    :root {
-      --bg-gradient: linear-gradient(135deg, #f6d365, #fda085, #ff758c, #ff7eb3);
-      --text-color: #111;
-      --card-bg: rgba(255, 255, 255, 0.2);
-      --card-border: rgba(255,255,255,0.3);
-      --modal-bg: rgba(255,255,255,0.85);
-      --highlight: #ff4d4d;
-    }
-    body.dark {
-      --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --text-color: #fff;
-      --card-bg: rgba(255,255,255,0.1);
-      --card-border: rgba(255,255,255,0.2);
-      --modal-bg: rgba(255,255,255,0.15);
-      --highlight: #ff758c;
-    }
+<meta charset="UTF-8">
+<title>ElectroGlass - Electronics Learning</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Root variables for light/dark mode */
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f6d365, #fda085, #ff758c, #ff7eb3);
+    --text-color: #111;
+    --card-bg: rgba(255, 255, 255, 0.2);
+    --card-border: rgba(255,255,255,0.3);
+    --modal-bg: rgba(255,255,255,0.85);
+    --highlight: #ff4d4d;
+    --sidebar-bg: rgba(255,255,255,0.2);
+    --sidebar-hover: rgba(255,255,255,0.4);
+  }
+  body.dark {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --text-color: #fff;
+    --card-bg: rgba(255,255,255,0.1);
+    --card-border: rgba(255,255,255,0.2);
+    --modal-bg: rgba(255,255,255,0.15);
+    --highlight: #ff758c;
+    --sidebar-bg: rgba(255,255,255,0.1);
+    --sidebar-hover: rgba(255,255,255,0.2);
+  }
 
-    /* Body & background animation */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-gradient);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      transition: color 0.4s ease;
-      padding: 0 15px;
-    }
+  /* Body & background animation */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+    transition: color 0.4s ease;
+  }
+  @keyframes gradientBG {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
 
-    @keyframes gradientBG {
-      0% {background-position:0% 50%;}
-      50% {background-position:100% 50%;}
-      100% {background-position:0% 50%;}
-    }
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+    min-height: 100vh;
+  }
+  .sidebar h2 {
+    font-family: 'Inter', sans-serif;
+    color: var(--highlight);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .sidebar button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 12px 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.3s;
+  }
+  .sidebar button:hover {
+    background: var(--sidebar-hover);
+  }
 
-    h1 {
-      margin: 20px;
-      font-size: 2.2rem;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255,255,255,0.7);
-    }
+  /* Main content */
+  .main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    /* Bio Section */
-    .bio {
-      max-width: 800px;
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 25px;
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      text-align: justify;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      animation: popIn 0.8s ease;
-      color: var(--text-color);
-    }
+  h1 {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.7);
+  }
 
-    .bio span {
-      font-weight: 700;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  /* Bio/Article section */
+  .bio {
+    max-width: 900px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .bio span { font-weight:700; background: linear-gradient(to right,#ff758c,#ff7eb3); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
 
-    @keyframes popIn {
-      from {opacity:0; transform: scale(0.95);}
-      to {opacity:1; transform: scale(1);}
-    }
+  /* Grid & Cards */
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+  }
+  .card {
+    width: 180px;
+    min-height: 180px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  .card img {width:60px; margin-bottom:10px;}
+  .card:hover {
+    transform: translateY(-10px) scale(1.08);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.45);
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  }
 
-    /* Grid & Cards */
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      max-width: 1000px;
-    }
+  /* Modal */
+  .modal {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:none;
+    background: rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    padding:10px;
+  }
+  .modal-content {
+    background: var(--modal-bg);
+    backdrop-filter: blur(25px);
+    padding:30px;
+    border-radius: 25px;
+    max-width:500px;
+    width:100%;
+    text-align:center;
+    color: var(--text-color);
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    animation: fadeIn 0.5s ease;
+  }
+  .modal-content h2 { font-family:'Poppins',sans-serif; color:var(--highlight);}
+  .modal-content p { font-family:'Inter',sans-serif; text-align:justify;}
+  .close-btn {
+    margin-top:20px; padding:10px 20px; border-radius:15px; border:none;
+    cursor:pointer; font-weight:bold;
+    background:linear-gradient(to right,#00c6ff,#0072ff);
+    color:#fff; transition:0.3s;
+  }
+  .close-btn:hover {background:linear-gradient(to right,#0072ff,#00c6ff);}
+  @keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
 
-    .card {
-      width: 180px;
-      min-height: 140px;
-      border-radius: 20px;
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-      font-weight: 600;
-      text-align: center;
-      flex-direction: column;
-      font-family: 'Inter', sans-serif;
-      color: #fff;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    }
+  /* Dark mode toggle */
+  .toggle-btn {
+    position: fixed;
+    top:20px; right:20px;
+    padding:12px 20px;
+    border-radius:15px; border:none; cursor:pointer;
+    font-weight:bold;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color:#fff; z-index:1100; transition:0.3s;
+  }
+  .toggle-btn:hover{background:linear-gradient(to right,#ff7eb3,#ff758c);}
 
-    .card:hover {
-      transform: translateY(-10px) scale(1.08);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.45);
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: #fff;
-    }
+  /* Tabs sections */
+  .section {display:none; flex-direction:column; align-items:center;}
+  .section.active{display:flex;}
 
-    /* Modal */
-    .modal {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      display:none;
-      background: rgba(0,0,0,0.6);
-      justify-content:center;
-      align-items:center;
-      z-index:1000;
-      padding:10px;
-    }
-
-    .modal-content {
-      background: var(--modal-bg);
-      backdrop-filter: blur(25px);
-      padding:30px;
-      border-radius: 25px;
-      max-width:500px;
-      width:100%;
-      text-align:center;
-      color: var(--text-color);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-      animation: fadeIn 0.5s ease;
-    }
-
-    .modal-content h2 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--highlight);
-      margin-top:0;
-    }
-
-    .modal-content p {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .close-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border-radius: 15px;
-      border:none;
-      cursor:pointer;
-      font-weight:bold;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color:#fff;
-      transition: 0.3s;
-    }
-
-    .close-btn:hover {
-      background: linear-gradient(to right, #0072ff, #00c6ff);
-    }
-
-    @keyframes fadeIn {
-      from {opacity:0; transform:scale(0.9);}
-      to {opacity:1; transform:scale(1);}
-    }
-
-    /* Dark mode toggle */
-    .toggle-btn {
-      position: fixed;
-      top:20px;
-      right:20px;
-      padding:12px 20px;
-      border-radius:15px;
-      cursor:pointer;
-      border:none;
-      font-weight:bold;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      color:#fff;
-      z-index:1100;
-      transition:0.3s;
-    }
-    .toggle-btn:hover {
-      background: linear-gradient(to right, #ff7eb3, #ff758c);
-    }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .card {width:140px; min-height:120px; font-size:0.9rem;}
-      .bio{font-size:0.95rem;}
-      h1{font-size:1.8rem;}
-    }
-    @media(max-width:480px){
-      .card{width:120px; min-height:110px; font-size:0.8rem;}
-      .bio{font-size:0.9rem;}
-      h1{font-size:1.5rem;}
-    }
-
-  </style>
+  /* Responsive */
+  @media(max-width:768px){.sidebar{width:150px;padding:15px;} .card{width:140px; min-height:150px; font-size:0.9rem;} .bio{font-size:0.95rem;} h1{font-size:1.8rem;}}
+  @media(max-width:480px){.sidebar{width:120px;padding:10px;} .card{width:120px; min-height:130px; font-size:0.8rem;} .bio{font-size:0.9rem;} h1{font-size:1.5rem;}}
+</style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-
-  <h1>ElectroGlass - Learn Electronics</h1>
-
-  <div class="bio">
-    Welcome to <span>ElectroGlass</span>! This interactive website was created to give students and hobbyists a visually engaging way to explore basic electronics components. 
-    Each card below represents a key element in circuits, like <span>resistors</span>, <span>capacitors</span>, and <span>transistors</span>. Click any card to learn <span>how it works, its applications, and practical tips</span>. 
-    The goal is to make learning electronics <span>fun, colorful, and modern</span> while remaining informative for aspiring engineers.
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>ElectroGlass</h2>
+    <button onclick="showSection('components')">Components</button>
+    <button onclick="showSection('microcontrollers')">Microcontrollers</button>
+    <button onclick="showSection('projects')">Easy Projects</button>
   </div>
 
-  <div class="grid">
-    <div class="card" onclick="showModal('Resistor', 'Limits current in a circuit. V=IR. Used for voltage division & current limiting.')">Resistor</div>
-    <div class="card" onclick="showModal('Capacitor', 'Stores energy in electric field. Used in filtering, timing circuits.')">Capacitor</div>
-    <div class="card" onclick="showModal('Diode', 'Allows current in one direction. Used for rectifiers & protection.')">Diode</div>
-    <div class="card" onclick="showModal('Transistor', 'Semiconductor switch/amplifier. Types: NPN, PNP, MOSFET.')">Transistor</div>
-    <div class="card" onclick="showModal('LED', 'Emits light when current flows. Used in displays & indicators.')">LED</div>
-    <div class="card" onclick="showModal('Inductor', 'Stores energy in magnetic field. Used in filters, chokes.')">Inductor</div>
-    <div class="card" onclick="showModal('Battery', 'Supplies electrical energy. Rated by voltage & capacity.')">Battery</div>
-    <div class="card" onclick="showModal('Switch', 'Opens/closes circuits manually or electronically.')">Switch</div>
-    <div class="card" onclick="showModal('Potentiometer', 'Variable resistor to adjust voltage. Often for volume or tuning.')">Potentiometer</div>
-    <div class="card" onclick="showModal('Fuse', 'Protects circuits by breaking current when overloaded.')">Fuse</div>
+  <!-- Main content -->
+  <div class="main">
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <h1>ElectroGlass - Learn Electronics</h1>
+
+    <!-- Components Section -->
+    <div id="components" class="section active">
+      <div class="bio">
+        Welcome to the <span>Components</span> section! Click on any card below to explore detailed information about each basic electronic component.
+      </div>
+      <div class="grid">
+        <div class="card" onclick="showModal('Resistor','Resistors limit current in circuits. Ohm\'s law: V=IR. Used for voltage division, current limiting, and biasing in amplifiers. Example: controlling LED brightness.')">Resistor</div>
+        <div class="card" onclick="showModal('Capacitor','Capacitors store energy in electric fields. Used for filtering, timing, and coupling circuits. Example: smoothing DC voltage in power supplies.')">Capacitor</div>
+        <div class="card" onclick="showModal('Diode','Diodes allow current in one direction. Used for rectification, signal demodulation, and protection. Example: converting AC to DC.')">Diode</div>
+        <div class="card" onclick="showModal('Transistor','Transistors amplify or switch current. Types: BJT (NPN, PNP), MOSFET. Example: audio amplifier, digital logic.')">Transistor</div>
+        <div class="card" onclick="showModal('LED','Light Emitting Diodes emit light when current passes through. Used for indicators, displays, and lighting.')">LED</div>
+        <div class="card" onclick="showModal('Inductor','Inductors store energy in magnetic fields. Used in filters, chokes, and oscillators. Example: smoothing current in power circuits.')">Inductor</div>
+        <div class="card" onclick="showModal('Switch','Switches control current flow in a circuit. Can be mechanical or electronic. Example: turning a device on/off.')">Switch</div>
+        <div class="card" onclick="showModal('Potentiometer','Variable resistor to adjust voltage. Used in volume control, tuning, and sensor calibration.')">Potentiometer</div>
+        <div class="card" onclick="showModal('Battery','Batteries provide electrical energy. Rated by voltage and capacity. Example: powering small circuits.')">Battery</div>
+        <div class="card" onclick="showModal('Fuse','Fuses protect circuits by breaking the circuit when current exceeds limits.')">Fuse</div>
+      </div>
+    </div>
+
+    <!-- Microcontrollers Section -->
+    <div id="microcontrollers" class="section">
+      <div class="bio">
+        The <span>Microcontrollers</span> section introduces popular microcontrollers used in electronics projects. Click a card to see their key features.
+      </div>
+      <div class="grid">
+        <div class="card" onclick="showModal('Arduino Uno','8-bit AVR microcontroller, 14 digital I/O pins, 6 analog inputs. Easy for beginners.')">Arduino Uno</div>
+        <div class="card" onclick="showModal('Arduino Mega','More pins than Uno, 54 digital I/O, 16 analog inputs. For bigger projects.')">Arduino Mega</div>
+        <div class="card" onclick="showModal('ESP8266','WiFi-enabled microcontroller, 32-bit, great for IoT projects.')">ESP8266</div>
+        <div class="card" onclick="showModal('ESP32','Dual-core WiFi/Bluetooth microcontroller. Used for advanced IoT.')">ESP32</div>
+        <div class="card" onclick="showModal('Raspberry Pi Pico','RP2040 microcontroller, dual-core ARM Cortex-M0+, suitable for embedded systems.')">Raspberry Pi Pico</div>
+        <div class="card" onclick="showModal('STM32F103','ARM Cortex-M3, used for high-performance embedded projects.')">STM32F103</div>
+        <div class="card" onclick="showModal('Teensy 4.0','High-speed ARM Cortex-M7 microcontroller, ideal for audio and complex applications.')">Teensy 4.0</div>
+        <div class="card" onclick="showModal('ATtiny85','Tiny 8-bit microcontroller, suitable for small embedded tasks.')">ATtiny85</div>
+        <div class="card" onclick="showModal('BeagleBone Black','Powerful Linux-capable microcontroller board for advanced projects.')">BeagleBone Black</div>
+        <div class="card" onclick="showModal('Adafruit Feather','Compact microcontroller boards with various connectivity options.')">Adafruit Feather</div>
+      </div>
+    </div>
+
+    <!-- Easy Projects Section -->
+    <div id="projects" class="section">
+      <div class="bio">
+        The <span>Easy Projects</span> section offers beginner-friendly electronics projects. Click a card to see a short guide and requirements.
+      </div>
+      <div class="grid">
+        <div class="card" onclick="showModal('LED Blinking','Simple project: make an LED blink using a resistor and microcontroller.')">LED Blinking</div>
+        <div class="card" onclick="showModal('Traffic Light','Control LEDs to simulate traffic lights using Arduino.')">Traffic Light</div>
+        <div class="card" onclick="showModal('Temperature Sensor','Read temperature using a sensor and display on serial monitor.')">Temperature Sensor</div>
+        <div class="card" onclick="showModal('Light Sensor','Control LED brightness using a photoresistor.')">Light Sensor</div>
+        <div class="card" onclick="showModal('Buzzer Alarm','Create a simple buzzer alarm triggered by a switch or sensor.')">Buzzer Alarm</div>
+        <div class="card" onclick="showModal('Servo Motor Control','Control a servo motor angle using Arduino.')">Servo Motor Control</div>
+        <div class="card" onclick="showModal('IR Remote Control','Control LEDs or motors using an IR remote.')">IR Remote Control</div>
+        <div class="card" onclick="showModal('Capacitive Touch','Detect touch using a capacitive sensor and trigger an LED.')">Capacitive Touch</div>
+        <div class="card" onclick="showModal('Obstacle Avoiding Car','Make a small robot avoid obstacles using ultrasonic sensor.')">Obstacle Avoiding Car</div>
+        <div class="card" onclick="showModal('Water Level Indicator','Monitor water tank levels using sensors and LEDs.')">Water Level Indicator</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Modal -->
@@ -247,6 +289,7 @@
   </div>
 
   <script>
+    // Modal functions
     function showModal(title,text){
       document.getElementById('modal-title').innerText=title;
       document.getElementById('modal-text').innerText=text;
@@ -254,6 +297,11 @@
     }
     function closeModal(){document.getElementById('modal').style.display='none';}
     function toggleDarkMode(){document.body.classList.toggle('dark');}
+    function showSection(id){
+      const sections=document.querySelectorAll('.section');
+      sections.forEach(s=>s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
   </script>
 </body>
 </html>
