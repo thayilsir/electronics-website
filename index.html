@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ElectroGlass - Electronics Learning</title>
+<title>ElectroGlass - Components</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -117,7 +117,7 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
 }
 .card{
   width:200px;
-  min-height:220px;
+  min-height:250px;
   border-radius:20px;
   background:var(--card-bg);
   backdrop-filter: blur(20px);
@@ -156,13 +156,9 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
 .toggle-btn{position:fixed; top:20px; right:20px; padding:12px 20px; border-radius:15px; border:none; cursor:pointer; font-weight:bold; background: linear-gradient(to right, #ff758c, #ff7eb3); color:#fff; z-index:1100; transition:0.3s;}
 .toggle-btn:hover{background:linear-gradient(to right,#ff7eb3,#ff758c);}
 
-/* Tabs sections */
-.section{display:none; flex-direction:column; align-items:center;}
-.section.active{display:flex;}
-
 /* Responsive */
-@media(max-width:768px){.sidebar{width:150px;padding:15px;} .card{width:160px; min-height:180px; font-size:0.95rem;} .bio{font-size:0.95rem;} h1{font-size:1.8rem;}}
-@media(max-width:480px){.sidebar{width:120px;padding:10px;} .card{width:140px; min-height:160px; font-size:0.85rem;} .bio{font-size:0.9rem;} h1{font-size:1.5rem;}}
+@media(max-width:768px){.sidebar{width:150px;padding:15px;} .card{width:160px; min-height:220px; font-size:0.95rem;} .bio{font-size:0.95rem;} h1{font-size:1.8rem;}}
+@media(max-width:480px){.sidebar{width:120px;padding:10px;} .card{width:140px; min-height:200px; font-size:0.85rem;} .bio{font-size:0.9rem;} h1{font-size:1.5rem;}}
 </style>
 </head>
 <body>
@@ -171,18 +167,36 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
 <div class="sidebar" id="sidebar">
   <h2>ElectroGlass</h2>
   <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
-  <button onclick="showSection('components')">🔧 <span>Components</span></button>
-  <button onclick="showSection('microcontrollers')">🖥️ <span>Microcontrollers</span></button>
-  <button onclick="showSection('projects')">⚡ <span>Easy Projects</span></button>
+  <button onclick="location.href='components.html'">🔧 <span>Components</span></button>
+  <button onclick="location.href='microcontrollers.html'">🖥️ <span>Microcontrollers</span></button>
+  <button onclick="location.href='projects.html'">⚡ <span>Easy Projects</span></button>
 </div>
 
-<!-- Main Content -->
+<!-- Main -->
 <div class="main">
-  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-  <h1>ElectroGlass - Learn Electronics</h1>
+<button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+<h1>Components</h1>
+<div class="bio">
+  Welcome to the Components page! Here you will find 10 essential electronic components with detailed explanations. Each card has an emoji and PNG icon for easy recognition. Click a card to learn more with 3–4 paragraphs covering features, applications, and practical tips.
+</div>
 
-  <!-- Sections go here: Components, Microcontrollers, Projects -->
-  <!-- Use previous card and modal code here -->
+<div class="grid">
+  <!-- Example Card 1 -->
+  <div class="card" onclick="showModal('Resistor','A resistor limits current in circuits. It is fundamental for controlling voltage and current.\\n\\nResistors are rated by resistance in ohms, and tolerances define accuracy.\\n\\nPractical tip: Always choose resistor values based on your circuit needs.','images/resistor.png')">
+    <span>🔹</span>
+    <img src="images/resistor.png" alt="Resistor">
+    Resistor
+  </div>
+
+  <!-- Example Card 2 -->
+  <div class="card" onclick="showModal('Capacitor','Capacitors store energy in an electric field and are used in filtering, timing, and coupling.\\n\\nThey come in different types: ceramic, electrolytic, film, and more.\\n\\nPractical tip: Pay attention to polarity for electrolytic capacitors.','images/capacitor.png')">
+    <span>⚡</span>
+    <img src="images/capacitor.png" alt="Capacitor">
+    Capacitor
+  </div>
+
+  <!-- Add 8 more cards similarly with emoji + PNG + title -->
+</div>
 
 </div>
 
@@ -199,7 +213,7 @@ h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10p
 <script>
 function showModal(title,text,imgSrc){
   document.getElementById('modal-title').innerText=title;
-  document.getElementById('modal-text').innerText=text;
+  document.getElementById('modal-text').innerText=text.replace(/\\n/g,'\n\n');
   const modalImg=document.getElementById('modal-img');
   if(imgSrc){ modalImg.src=imgSrc; modalImg.style.display='block'; }
   else{ modalImg.style.display='none'; }
@@ -207,10 +221,6 @@ function showModal(title,text,imgSrc){
 }
 function closeModal(){document.getElementById('modal').style.display='none';}
 function toggleDarkMode(){document.body.classList.toggle('dark');}
-function showSection(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
 function toggleSidebar(){document.getElementById('sidebar').classList.toggle('minimized');}
 </script>
 </body>
