@@ -3,974 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ElectroCom - Learn Electronics Easily</title>
+<title>Electrocom - Electronics Learning</title>
 <style>
-/* ==============================
-   RESET & BASE
-============================== */
-* {
+  /* ================= Global ================= */
+  body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background: linear-gradient(135deg, #f0f5ff, #fff7f2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, #f0f3f8, #d9e1f2);
     color: #111;
     transition: background 0.3s, color 0.3s;
-}
-h1,h2,h3 {
-    margin-bottom: 0.5em;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-}
-ul {
-    list-style: none;
-}
+  }
+  body.dark {
+    background: linear-gradient(160deg, #121212, #1f1f1f);
+    color: #eee;
+  }
+  a { text-decoration: none; color: inherit; }
 
-/* ==============================
-   GLASSMORPHIC CARD
-============================== */
-.card {
-    background: rgba(255,255,255,0.3);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1rem 1.5rem;
-    margin: 1rem 0;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-}
-
-/* ==============================
-   SIDEBAR
-============================== */
-#sidebar {
+  /* ================= Sidebar ================= */
+  .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 260px;
+    width: 280px;
     height: 100%;
     background: rgba(255,255,255,0.25);
     backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(255,255,255,0.2);
-    padding: 2rem 1rem 1rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.18);
+    padding-top: 60px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
     overflow-y: auto;
-    transition: transform 0.3s;
-    z-index: 1000;
-}
-#sidebar h2 {
-    font-size: 1.5rem;
-    color: #ff4d6d;
+  }
+  body.dark .sidebar {
+    background: rgba(20,20,20,0.45);
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .sidebar h2 {
+    font-size: 1.2rem;
+    padding: 0 20px;
     margin-bottom: 1rem;
-    text-align: center;
-}
-#sidebar ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-#sidebar li {
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem 0.8rem;
-    border-radius: 10px;
+    color: #007aff;
+  }
+  .sidebar a {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin: 4px 12px;
     transition: background 0.2s;
-}
-#sidebar li:hover, #sidebar li.active {
-    background: rgba(255,77,109,0.2);
-}
+  }
+  .sidebar a:hover, .sidebar a.active {
+    background: rgba(0,122,255,0.2);
+  }
 
-/* ==============================
-   MAIN CONTENT
-============================== */
-#main {
-    margin-left: 280px;
-    padding: 2rem;
-    transition: margin-left 0.3s;
-}
-section {
-    margin-bottom: 3rem;
-}
-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ff4d6d;
-}
-
-/* ==============================
-   ACCORDION
-============================== */
-.accordion {
-    cursor: pointer;
-    padding: 0.8rem 1rem;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.3);
-    margin-bottom: 0.5rem;
+  /* ================= Header ================= */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 280px;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    z-index: 1000;
+    box-sizing: border-box;
     transition: background 0.3s;
-}
-.accordion:hover {
-    background: rgba(255,77,109,0.2);
-}
-.panel {
-    display: none;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-/* ==============================
-   SEARCH
-============================== */
-#searchBox {
-    width: 100%;
-    padding: 0.5rem 1rem;
+  }
+  body.dark .header {
+    background: rgba(20,20,20,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .header h1 {
+    font-size: 1.5rem;
+    color: #007aff;
+  }
+  .toggle-btn {
+    padding: 6px 12px;
     border-radius: 12px;
     border: none;
-    margin-bottom: 1rem;
-    outline: none;
-    background: rgba(255,255,255,0.3);
-    backdrop-filter: blur(6px);
-}
-
-/* ==============================
-   DARK MODE
-============================== */
-body.dark-mode {
-    background: linear-gradient(135deg, #111216, #1a1a23);
-    color: #e0e0e0;
-}
-body.dark-mode #sidebar {
-    background: rgba(20,20,30,0.85);
-    border-right: 1px solid rgba(255,255,255,0.05);
-}
-body.dark-mode .card, body.dark-mode .accordion, body.dark-mode #searchBox {
-    background: rgba(255,255,255,0.05);
-    color: #e0e0e0;
-}
-body.dark-mode #sidebar li:hover, body.dark-mode #sidebar li.active {
-    background: rgba(255,77,109,0.3);
-}
-
-/* ==============================
-   RESPONSIVE
-============================== */
-@media screen and (max-width: 992px){
-    #main { margin-left: 220px; padding:1.5rem; }
-    #sidebar { width: 220px; }
-}
-@media screen and (max-width: 768px){
-    #sidebar { transform: translateX(-100%); position: fixed; }
-    #main { margin-left: 0; padding: 1rem; }
-    #sidebar.open { transform: translateX(0); }
-    #burger {
-        display: block;
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        background: rgba(255,255,255,0.3);
-        backdrop-filter: blur(6px);
-        padding: 0.5rem 0.8rem;
-        border-radius: 10px;
-        cursor: pointer;
-        z-index: 1100;
-    }
-}
-
-/* ==============================
-   BUTTONS
-============================== */
-button {
     cursor: pointer;
-    padding: 0.4rem 0.8rem;
-    border: none;
-    border-radius: 10px;
-    background: #ff4d6d;
-    color: #fff;
-    transition: background 0.3s;
-}
-button:hover {
-    background: #ff1a4d;
-}
+    background: rgba(0,122,255,0.2);
+    color: #007aff;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  .toggle-btn:hover { background: rgba(0,122,255,0.35); }
 
-/* ==============================
-   PRINT RULE
-============================== */
-@media print {
-    #sidebar, #burger, #darkModeToggle, #searchBox { display: none; }
-}
+  /* ================= Main Content ================= */
+  .main {
+    margin-left: 300px;
+    padding: 80px 20px 40px;
+    max-width: 1200px;
+  }
+
+  /* ================= Accordion ================= */
+  .accordion {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    cursor: pointer;
+    padding: 16px;
+    margin: 12px 0;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  body.dark .accordion { background: rgba(40,40,40,0.45); }
+  .accordion:hover { background: rgba(0,122,255,0.15); }
+
+  .panel {
+    padding: 0 16px 16px;
+    display: none;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    margin-bottom: 12px;
+  }
+  body.dark .panel { background: rgba(40,40,40,0.35); }
+
+  /* ================= Search ================= */
+  .search-box {
+    margin-bottom: 20px;
+    display: flex;
+  }
+  .search-box input {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    font-size: 1rem;
+  }
+  body.dark .search-box input { border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.25); color: #eee; }
+
+  /* ================= Responsive ================= */
+  @media(max-width: 768px){
+    .sidebar { transform: translateX(-100%); position: fixed; z-index: 2000; }
+    .sidebar.active { transform: translateX(0); }
+    .header { left: 0; }
+    .main { margin-left: 0; padding-top: 80px; }
+  }
 </style>
 </head>
 <body>
-<!-- BURGER MENU FOR MOBILE -->
-<div id="burger">&#9776;</div>
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-<h2>ElectroCom ⚡</h2>
-<input type="text" id="searchBox" placeholder="Search components/projects...">
-<ul>
-<li data-target="components">🔌 Components</li>
-<li data-target="projects">🛠️ Projects</li>
-<li data-target="microcontrollers">💻 Microcontrollers</li>
-<li data-target="interview">❓ Interview Qs</li>
-<li id="darkModeToggle">🌙 Dark Mode</li>
-</ul>
+<div class="sidebar">
+  <h2>Electrocom ⚡</h2>
+  <a href="#components" class="active">🛠 Components</a>
+  <a href="#projects">📦 Projects</a>
+  <a href="#microcontrollers">💻 Microcontrollers</a>
+  <a href="#questions">❓ Interview Qs</a>
 </div>
 
-<!-- MAIN CONTENT -->
-<div id="main">
+<div class="header">
+  <h1>Electrocom</h1>
+  <button class="toggle-btn" id="modeToggle">Dark Mode</button>
+</div>
+
+<div class="main">
+
+<!-- ================= Search Box ================= -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search components, projects, microcontrollers, questions...">
+</div>
 
 <!-- ================= Components Section ================= -->
 <section id="components">
-<h2>Basic Electronic Components</h2>
+<h2>Basic Electronic Components 🛠</h2>
 
 <!-- Component 1 -->
 <div class="accordion">Resistor</div>
-<div class="panel card">
-<p>A resistor is a fundamental electronic component that limits the flow of electric current in a circuit. It is passive and does not generate energy.</p>
-<p>Resistors work by converting electrical energy into heat, according to Ohm’s law (V = IR), which defines the relationship between voltage, current, and resistance.</p>
-<p>Applications: voltage division, current limiting, pull-up/down in digital circuits, and biasing of transistors.</p>
+<div class="panel">
+<p>A resistor is a passive component that limits the flow of electric current in a circuit.</p>
+<p>It works by converting electrical energy into heat, obeying Ohm's law (V=IR).</p>
+<p>Applications: current limiting for LEDs, voltage dividers, biasing transistors.</p>
 </div>
 
 <!-- Component 2 -->
 <div class="accordion">Capacitor</div>
-<div class="panel card">
-<p>A capacitor stores electrical energy in an electric field between two conductive plates separated by an insulator (dielectric). It can charge and discharge rapidly.</p>
-<p>It works by accumulating charge proportional to the voltage applied (Q = CV), releasing it when needed. Capacitors block DC but pass AC in circuits.</p>
-<p>Applications: smoothing power supplies, timing circuits, coupling/decoupling signals, energy storage.</p>
+<div class="panel">
+<p>Capacitors store energy in an electric field and release it when needed. They oppose changes in voltage.</p>
+<p>They work by accumulating charges on two conductive plates separated by an insulator (dielectric).</p>
+<p>Applications: smoothing DC power, timing circuits, coupling/decoupling signals.</p>
 </div>
 
 <!-- Component 3 -->
 <div class="accordion">Inductor</div>
-<div class="panel card">
-<p>An inductor is a passive component that stores energy in a magnetic field created by the current passing through a coiled wire.</p>
-<p>It resists changes in current and can filter or smooth signals, store energy in switching circuits, or form resonant LC circuits.</p>
-<p>Applications: chokes in power supplies, tuning circuits, transformers, and energy storage in switching regulators.</p>
+<div class="panel">
+<p>An inductor stores energy in a magnetic field when current passes through it.</p>
+<p>It resists changes in current and can produce inductive reactance in AC circuits.</p>
+<p>Applications: filters, transformers, chokes, energy storage in power supplies.</p>
 </div>
 
-</section>
-
-<!-- ================= Projects Section ================= -->
-<section id="projects">
-<h2>Electronics Projects</h2>
-
-<!-- Project 1 -->
-<div class="accordion">LED Blinking with Arduino</div>
-<div class="panel card">
-<p>This beginner-friendly project teaches how to control an LED using Arduino. You'll learn basic programming and digital output control.</p>
-<p><strong>Components:</strong> Arduino Uno, LED, 220Ω resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect LED to pin 13 via resistor, write a simple sketch to turn it on/off every second, upload to Arduino.</p>
-<p><strong>How it works:</strong> Arduino outputs HIGH/LOW signals to the LED pin, current flows through resistor limiting LED brightness.</p>
-</div>
-
-<!-- Project 2 -->
-<div class="accordion">Temperature Sensor Display</div>
-<div class="panel card">
-<p>This project reads temperature using an LM35 sensor and displays it on the serial monitor.</p>
-<p><strong>Components:</strong> Arduino Uno, LM35 sensor, jumper wires, USB cable.</p>
-<p><strong>Steps:</strong> Connect sensor VCC/GND/Output to Arduino analog pin, write sketch to read analog value, convert to °C, print on serial monitor.</p>
-<p><strong>How it works:</strong> LM35 outputs voltage proportional to temperature; Arduino converts voltage to readable temperature values.</p>
-</div>
-
-<!-- Project 3 -->
-<div class="accordion">Simple Light-Sensitive Switch</div>
-<div class="panel card">
-<p>This project uses a photoresistor to switch an LED on or off based on ambient light.</p>
-<p><strong>Components:</strong> Arduino, photoresistor, LED, 220Ω resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect photoresistor to analog pin, read value in Arduino, turn LED on if light < threshold, off otherwise.</p>
-<p><strong>How it works:</strong> Photoresistor resistance changes with light; Arduino reads analog voltage and triggers LED accordingly.</p>
-</div>
-
-</section>
-
-<!-- ================= Microcontrollers Section ================= -->
-<section id="microcontrollers">
-<h2>Microcontrollers</h2>
-
-<!-- Microcontroller 1 -->
-<div class="accordion">Arduino Uno</div>
-<div class="panel card">
-<p>The Arduino Uno is a widely used microcontroller board based on the ATmega328P. It has 14 digital I/O pins and 6 analog inputs, making it ideal for beginners.</p>
-<p>Its simplicity, open-source ecosystem, and large library support make it perfect for rapid prototyping, education, and hobby projects.</p>
-<p>Applications: LED projects, sensor data logging, robotics, IoT prototypes. Engineers love it because it allows quick proof-of-concept without deep hardware setup.</p>
-</div>
-
-<!-- Microcontroller 2 -->
-<div class="accordion">ESP32</div>
-<div class="panel card">
-<p>ESP32 is a powerful Wi-Fi and Bluetooth-enabled microcontroller with dual-core processing and rich peripherals. It's ideal for connected projects.</p>
-<p>Features include multiple GPIOs, ADC/DAC, PWM, SPI/I2C/UART, and low-power modes. It is programmable via Arduino IDE or MicroPython.</p>
-<p>Applications: IoT devices, wireless sensors, home automation. Engineers care because it combines connectivity and high performance at low cost.</p>
-</div>
-
-<!-- Microcontroller 3 -->
-<div class="accordion">Raspberry Pi Pico</div>
-<div class="panel card">
-<p>The Raspberry Pi Pico is a low-cost, high-performance microcontroller board with RP2040 chip. It has flexible I/O and supports MicroPython/C++ programming.</p>
-<p>Its dual-core ARM Cortex-M0+ processor and programmable I/O make it suitable for both simple and advanced projects.</p>
-<p>Applications: robotics, sensors, automation, hobbyist gadgets. It’s loved for low cost, high speed, and versatile programming options.</p>
-</div>
-
-</section>
-
-<!-- ================= Interview Questions Section ================= -->
-<section id="interview">
-<h2>Electronics Engineering Interview Questions</h2>
-
-<!-- Question 1 -->
-<div class="accordion">What is Ohm's Law?</div>
-<div class="panel card">
-<p>Ohm's Law states that the current through a conductor between two points is directly proportional to the voltage across the two points and inversely proportional to the resistance: I = V/R.</p>
-<p>Relevance: Fundamental for designing circuits, calculating current, voltage drops, and resistor values.</p>
-<p>Engineers should know this because nearly every circuit design and analysis depends on it.</p>
-</div>
-
-<!-- Question 2 -->
-<div class="accordion">Difference between BJT and MOSFET?</div>
-<div class="panel card">
-<p>BJT (Bipolar Junction Transistor) is current-controlled, while MOSFET (Metal-Oxide-Semiconductor FET) is voltage-controlled.</p>
-<p>Relevance: Choosing the right transistor affects switching speed, power handling, and efficiency.</p>
-<p>Engineers need this knowledge for proper selection in amplifiers, switches, and power circuits.</p>
-</div>
-
-<!-- Question 3 -->
-<div class="accordion">What is a pull-up resistor?</div>
-<div class="panel card">
-<p>A pull-up resistor connects a digital input to a high logic level to ensure it defaults to HIGH when not driven.</p>
-<p>Relevance: Prevents floating inputs which can cause unpredictable behavior.</p>
-<p>Essential for engineers designing reliable digital circuits and microcontroller inputs.</p>
-</div>
-
-</section>
-
-</div> <!-- end main -->
-
-<script>
-// ==============================
-// SIDEBAR NAVIGATION
-// ==============================
-const sidebarLinks = document.querySelectorAll('#sidebar li[data-target]');
-sidebarLinks.forEach(link=>{
-    link.addEventListener('click',()=>{
-        const target = document.getElementById(link.dataset.target);
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-});
-
-// ==============================
-// ACCORDION
-// ==============================
-const accordions = document.querySelectorAll('.accordion');
-accordions.forEach(acc=>{
-    acc.addEventListener('click',()=>{
-        acc.classList.toggle('active');
-        const panel = acc.nextElementSibling;
-        if(panel.style.display === 'block') panel.style.display = 'none';
-        else panel.style.display = 'block';
-    });
-});
-
-// ==============================
-// DARK MODE
-// ==============================
-const darkToggle = document.getElementById('darkModeToggle');
-darkToggle.addEventListener('click', ()=>{
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-});
-if(localStorage.getItem('darkMode')==='true'){
-    document.body.classList.add('dark-mode');
-}
-
-// ==============================
-// BURGER MENU
-// ==============================
-const burger = document.getElementById('burger');
-burger.addEventListener('click', ()=>{
-    document.getElementById('sidebar').classList.toggle('open');
-});
-
-// ==============================
-// SEARCH FILTER
-// ==============================
-const searchBox = document.getElementById('searchBox');
-searchBox.addEventListener('input', ()=>{
-    const filter = searchBox.value.toLowerCase();
-    document.querySelectorAll('.accordion').forEach(acc=>{
-        if(acc.textContent.toLowerCase().includes(filter)) acc.style.display='block';
-        else acc.style.display='none';
-    });
-});
-</script>
-
-</body>
-</html>
-<!-- ================= Components Section Continued ================= -->
 <!-- Component 4 -->
 <div class="accordion">Diode</div>
-<div class="panel card">
-<p>A diode allows current to flow in one direction only, blocking reverse flow. It's a passive component used to control direction of electricity.</p>
-<p>Diodes work based on the P-N junction: electrons move from n-type to p-type material when forward biased.</p>
-<p>Applications: rectifiers, voltage protection, signal demodulation, LED circuits.</p>
+<div class="panel">
+<p>A diode allows current to flow in one direction and blocks it in the reverse direction.</p>
+<p>It works via a p-n junction where only forward-biased junctions conduct current.</p>
+<p>Applications: rectifiers, protection circuits, signal demodulation.</p>
 </div>
 
 <!-- Component 5 -->
-<div class="accordion">LED (Light Emitting Diode)</div>
-<div class="panel card">
-<p>An LED emits light when current passes through it in the forward direction. It's energy-efficient and long-lasting compared to traditional bulbs.</p>
-<p>It works via electroluminescence: electrons recombine with holes releasing photons of light.</p>
-<p>Applications: indicators, displays, lighting, signaling, decorative projects.</p>
-</div>
-
-<!-- Component 6 -->
-<div class="accordion">Transistor (BJT)</div>
-<div class="panel card">
-<p>BJT (Bipolar Junction Transistor) is a current-controlled switch/amplifier with three terminals: collector, base, and emitter.</p>
-<p>It works by controlling a large current between collector-emitter using a small base current.</p>
-<p>Applications: amplifiers, switching circuits, oscillators, digital logic circuits.</p>
-</div>
-
-<!-- Component 7 -->
-<div class="accordion">Transistor (MOSFET)</div>
-<div class="panel card">
-<p>MOSFET is a voltage-controlled transistor with high input impedance, used for switching and amplification.</p>
-<p>Gate voltage creates a conductive channel allowing current to flow between drain and source.</p>
-<p>Applications: switching power supplies, motor drivers, digital electronics, amplifiers.</p>
-</div>
-
-<!-- Component 8 -->
-<div class="accordion">IC (Integrated Circuit)</div>
-<div class="panel card">
-<p>An IC is a miniaturized electronic circuit on a small chip of semiconductor material. It can contain thousands or millions of transistors.</p>
-<p>ICs simplify circuit design, reduce size, and improve reliability compared to discrete components.</p>
-<p>Applications: microcontrollers, amplifiers, logic gates, timers, memory devices.</p>
-</div>
-
-<!-- Component 9 -->
-<div class="accordion">Relay</div>
-<div class="panel card">
-<p>A relay is an electrically operated switch that uses an electromagnet to mechanically operate contacts.</p>
-<p>It allows a low-power circuit to control a high-power device safely.</p>
-<p>Applications: switching motors, lights, automated systems, isolation of circuits.</p>
-</div>
-
-<!-- Component 10 -->
-<div class="accordion">Switch</div>
-<div class="panel card">
-<p>A switch is a simple device to open or close an electrical circuit manually or mechanically.</p>
-<p>It works by either connecting or disconnecting the conducting path.</p>
-<p>Applications: turning devices on/off, control panels, safety mechanisms.</p>
-</div>
-
-<!-- Component 11 -->
-<div class="accordion">Potentiometer</div>
-<div class="panel card">
-<p>A potentiometer is a variable resistor used to adjust voltage or current in a circuit.</p>
-<p>It works by sliding a wiper along a resistive track, varying resistance.</p>
-<p>Applications: volume controls, brightness adjustment, sensor calibration.</p>
-</div>
-
-<!-- Component 12 -->
-<div class="accordion">Crystal Oscillator</div>
-<div class="panel card">
-<p>A crystal oscillator generates precise frequencies using the mechanical resonance of a quartz crystal.</p>
-<p>It works via piezoelectric effect: voltage applied causes crystal vibration, generating stable oscillations.</p>
-<p>Applications: clocks, microcontroller timing, radio transmitters, communication devices.</p>
-</div>
-
-<!-- Component 13 -->
-<div class="accordion">Fuse</div>
-<div class="panel card">
-<p>A fuse is a protective device that breaks a circuit when current exceeds a certain limit, preventing damage or fire.</p>
-<p>It works by melting a thin wire or strip inside when excessive current passes.</p>
-<p>Applications: household appliances, power circuits, automotive circuits, safety protection.</p>
-</div>
-
-<!-- Component 14 -->
-<div class="accordion">Transformer</div>
-<div class="panel card">
-<p>A transformer transfers electrical energy between two circuits using electromagnetic induction.</p>
-<p>It works by varying the number of turns in primary and secondary coils to step voltage up or down.</p>
-<p>Applications: power distribution, voltage regulation, adapters, electrical isolation.</p>
-</div>
-
-<!-- Component 15 -->
-<div class="accordion">Photoresistor (LDR)</div>
-<div class="panel card">
-<p>A photoresistor changes resistance based on light intensity falling on it.</p>
-<p>It works because its semiconductor material becomes more conductive when exposed to light.</p>
-<p>Applications: automatic lighting, alarms, light meters, solar tracking systems.</p>
-</div>
-
-<!-- Component 16 -->
-<div class="accordion">Thermistor</div>
-<div class="panel card">
-<p>A thermistor is a temperature-dependent resistor that changes resistance with temperature.</p>
-<p>NTC thermistors decrease resistance with temperature rise, PTC increase.</p>
-<p>Applications: temperature measurement, overcurrent protection, temperature compensation circuits.</p>
-</div>
-
-<!-- Component 17 -->
-<div class="accordion">Hall Effect Sensor</div>
-<div class="panel card">
-<p>A Hall sensor detects magnetic fields and converts them into voltage or current signals.</p>
-<p>It works by the Hall effect: voltage develops across a conductor when placed in a magnetic field perpendicular to current.</p>
-<p>Applications: brushless motors, position sensing, speed detection, proximity sensors.</p>
-</div>
-
-<!-- Component 18 -->
-<div class="accordion">Piezo Buzzer</div>
-<div class="panel card">
-<p>A piezo buzzer converts electrical signals into sound using piezoelectric materials.</p>
-<p>It works by applying AC voltage to piezo material, making it vibrate and produce audible sound.</p>
-<p>Applications: alarms, timers, notification signals, simple music generators.</p>
-</div>
-
-<!-- Component 19 -->
-<div class="accordion">Capacitive Touch Sensor</div>
-<div class="panel card">
-<p>A capacitive sensor detects touch by measuring changes in capacitance caused by a human finger.</p>
-<p>It works without mechanical movement, making devices more durable and responsive.</p>
-<p>Applications: touchscreens, buttons, lamps, smart devices.</p>
-</div>
-
-<!-- Component 20 -->
-<div class="accordion">Microphone</div>
-<div class="panel card">
-<p>A microphone converts sound waves into electrical signals.</p>
-<p>It works using dynamic (coil+magnet) or condenser (capacitor+diaphragm) methods to convert vibrations to voltage changes.</p>
-<p>Applications: audio recording, communication, voice recognition, sound detection circuits.</p>
-</div>
-<!-- ================= Projects Section Continued ================= -->
-<!-- Project 4 -->
-<div class="accordion">Automatic Night Lamp</div>
-<div class="panel card">
-<p>This project turns an LED on automatically when ambient light falls below a certain threshold using an LDR and Arduino.</p>
-<p><strong>Components:</strong> Arduino Uno, LDR, LED, 220Ω resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect LDR to analog input, LED to digital output. Read LDR value in Arduino, compare with threshold, turn LED ON if dark, OFF if bright.</p>
-<p><strong>How it works:</strong> LDR changes resistance with light. Arduino reads analog voltage and triggers LED accordingly. Perfect beginner project for sensors and digital output control.</p>
-</div>
-
-<!-- Project 5 -->
-<div class="accordion">Simple Traffic Light System</div>
-<div class="panel card">
-<p>This project simulates a traffic light sequence using LEDs controlled by Arduino.</p>
-<p><strong>Components:</strong> Arduino Uno, red/amber/green LEDs, resistors, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect LEDs to digital pins via resistors. Program Arduino to switch LEDs in correct timing sequence (green→amber→red).</p>
-<p><strong>How it works:</strong> Arduino outputs HIGH/LOW signals to LEDs in sequence to simulate real traffic lights. Demonstrates timing control and sequencing logic.</p>
-</div>
-
-<!-- Project 6 -->
-<div class="accordion">Temperature-controlled Fan</div>
-<div class="panel card">
-<p>This project automatically turns a fan on/off based on ambient temperature using LM35 sensor.</p>
-<p><strong>Components:</strong> Arduino Uno, LM35 sensor, NPN transistor, DC fan, resistors, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect LM35 to analog input, fan via transistor to digital pin. Program Arduino to read temperature, switch fan ON if above threshold.</p>
-<p><strong>How it works:</strong> Sensor voltage corresponds to temperature. Arduino uses threshold logic to control transistor, turning fan on/off. Teaches analog sensing and actuator control.</p>
-</div>
-
-<!-- Project 7 -->
-<div class="accordion">Burglar Alarm</div>
-<div class="panel card">
-<p>This project uses an IR sensor to detect motion and trigger a buzzer alarm.</p>
-<p><strong>Components:</strong> Arduino, IR sensor, piezo buzzer, jumper wires, breadboard.</p>
-<p><strong>Steps:</strong> Connect IR sensor to digital input, buzzer to digital output. Program Arduino to sound buzzer when motion detected.</p>
-<p><strong>How it works:</strong> IR sensor detects presence via IR beam interruption. Arduino triggers buzzer output. Demonstrates digital input sensing and alarm logic.</p>
-</div>
-
-<!-- Project 8 -->
-<div class="accordion">Ultrasonic Distance Meter</div>
-<div class="panel card">
-<p>This project measures distance using an ultrasonic sensor and displays it via serial monitor.</p>
-<p><strong>Components:</strong> Arduino, HC-SR04 ultrasonic sensor, jumper wires, USB cable.</p>
-<p><strong>Steps:</strong> Connect trigger/echo pins to Arduino digital pins. Write sketch to send pulse, read echo time, calculate distance and display.</p>
-<p><strong>How it works:</strong> Arduino measures time taken by ultrasonic pulse to return, then computes distance using speed of sound. Teaches sensor interfacing and timing.</p>
-</div>
-
-<!-- Project 9 -->
-<div class="accordion">Servo Motor Control</div>
-<div class="panel card">
-<p>This project controls a servo motor position using potentiometer input.</p>
-<p><strong>Components:</strong> Arduino, servo motor, potentiometer, jumper wires, breadboard.</p>
-<p><strong>Steps:</strong> Connect potentiometer to analog input, servo to PWM output. Program Arduino to map analog value to servo angle.</p>
-<p><strong>How it works:</strong> Potentiometer voltage changes analog input. Arduino converts value to PWM for servo. Teaches analog input and PWM output control.</p>
-</div>
-
-<!-- Project 10 -->
-<div class="accordion">Simple Water Level Indicator</div>
-<div class="panel card">
-<p>This project detects water level in a tank and indicates via LEDs.</p>
-<p><strong>Components:</strong> Arduino, water level sensors/probes, LEDs, resistors, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect sensors to digital inputs, LEDs to outputs. Program Arduino to light LEDs according to water level.</p>
-<p><strong>How it works:</strong> Sensors detect water presence. Arduino outputs HIGH/LOW to LEDs to indicate levels. Demonstrates multiple input handling and output control.</p>
-</div>
-
-<!-- Project 11 -->
-<div class="accordion">IR Remote Control Switch</div>
-<div class="panel card">
-<p>Control an LED or device using an IR remote and Arduino.</p>
-<p><strong>Components:</strong> Arduino, IR receiver, IR remote, LED, resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect IR receiver to digital input, LED to output. Use IR library to read remote codes, map to ON/OFF commands.</p>
-<p><strong>How it works:</strong> IR signals are decoded by Arduino and used to switch output. Teaches wireless control and signal decoding.</p>
-</div>
-
-<!-- Project 12 -->
-<div class="accordion">DC Motor Speed Control</div>
-<div class="panel card">
-<p>This project adjusts DC motor speed using PWM control from Arduino.</p>
-<p><strong>Components:</strong> Arduino, NPN transistor or motor driver, DC motor, potentiometer, resistors, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect motor via driver/transistor, potentiometer to analog input. Map analog input to PWM output controlling motor speed.</p>
-<p><strong>How it works:</strong> Arduino PWM modulates average voltage to motor, controlling speed. Teaches analog input to PWM output conversion.</p>
-</div>
-
-<!-- Project 13 -->
-<div class="accordion">Simple Clap Switch</div>
-<div class="panel card">
-<p>Turn an LED or device ON/OFF by clapping hands using a microphone sensor.</p>
-<p><strong>Components:</strong> Arduino, microphone sensor, LED, resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect sensor to analog input, LED to digital output. Program Arduino to detect sound peaks and toggle LED.</p>
-<p><strong>How it works:</strong> Microphone converts sound to voltage. Arduino detects amplitude peaks to toggle output. Demonstrates analog sound sensing and control logic.</p>
-</div>
-
-<!-- Project 14 -->
-<div class="accordion">Soil Moisture Detector</div>
-<div class="panel card">
-<p>This project monitors soil moisture and triggers an alert or pump when dry.</p>
-<p><strong>Components:</strong> Arduino, soil moisture sensor, LED/buzzer, relay (optional), jumper wires.</p>
-<p><strong>Steps:</strong> Connect sensor to analog input, output to LED or relay. Program Arduino to trigger alert if moisture < threshold.</p>
-<p><strong>How it works:</strong> Sensor voltage varies with moisture. Arduino reads analog value and triggers output. Teaches environmental sensing.</p>
-</div>
-
-<!-- Project 15 -->
-<div class="accordion">Digital Dice</div>
-<div class="panel card">
-<p>This project simulates a dice using LEDs controlled by Arduino.</p>
-<p><strong>Components:</strong> Arduino, 7 LEDs, resistors, push button, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect LEDs to digital pins. Program Arduino to randomly light LEDs in dice pattern when button pressed.</p>
-<p><strong>How it works:</strong> Arduino random number generator determines which LEDs to turn on. Demonstrates digital output and randomness control.</p>
-</div>
-
-<!-- Project 16 -->
-<div class="accordion">Simple FM Radio</div>
-<div class="panel card">
-<p>Build a basic FM radio receiver using IC-based tuner.</p>
-<p><strong>Components:</strong> FM receiver IC (like TEA5767), Arduino or circuit board, speaker, antennas.</p>
-<p><strong>Steps:</strong> Connect IC per datasheet, supply power, interface with audio output. Program Arduino (if needed) to tune frequencies.</p>
-<p><strong>How it works:</strong> IC decodes FM signals to audio. Arduino may assist in digital tuning. Demonstrates RF signal processing.</p>
-</div>
-
-<!-- Project 17 -->
-<div class="accordion">Servo-based Robotic Arm</div>
-<div class="panel card">
-<p>Control a small robotic arm using multiple servos and Arduino.</p>
-<p><strong>Components:</strong> Arduino, servo motors, potentiometers or joystick, jumper wires, mechanical arm kit.</p>
-<p><strong>Steps:</strong> Connect servos to PWM pins, input devices to analog pins. Program Arduino to map input to servo positions.</p>
-<p><strong>How it works:</strong> Input device values are mapped to servo angles. Demonstrates multi-axis control, PWM, and robotics basics.</p>
-</div>
-
-<!-- Project 18 -->
-<div class="accordion">Ultrasonic Parking Sensor</div>
-<div class="panel card">
-<p>This project measures distance to obstacles using an ultrasonic sensor and alerts with LEDs or buzzer.</p>
-<p><strong>Components:</strong> Arduino, HC-SR04, LEDs or buzzer, resistors, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect sensor, program Arduino to read distance and trigger alert if object < threshold.</p>
-<p><strong>How it works:</strong> Time-of-flight of ultrasonic pulse determines distance. Arduino processes and triggers output. Teaches distance measurement and alerts.</p>
-</div>
-
-<!-- Project 19 -->
-<div class="accordion">RGB LED Color Mixer</div>
-<div class="panel card">
-<p>This project controls RGB LED colors using PWM signals from Arduino.</p>
-<p><strong>Components:</strong> Arduino, common cathode RGB LED, resistors, potentiometers, jumper wires, breadboard.</p>
-<p><strong>Steps:</strong> Connect RGB pins to PWM outputs. Use potentiometers to control red, green, blue intensities via Arduino.</p>
-<p><strong>How it works:</strong> Arduino PWM adjusts duty cycle to control color intensity. Demonstrates analog control of multiple outputs.</p>
-</div>
-
-<!-- Project 20 -->
-<div class="accordion">Capacitive Touch Lamp</div>
-<div class="panel card">
-<p>This project allows turning an LED lamp on/off by touching a sensor.</p>
-<p><strong>Components:</strong> Arduino, capacitive touch sensor, LED, resistor, breadboard, jumper wires.</p>
-<p><strong>Steps:</strong> Connect sensor to digital input, LED to output. Program Arduino to toggle LED state when sensor touched.</p>
-<p><strong>How it works:</strong> Capacitive sensor detects touch via change in capacitance. Arduino toggles LED output. Demonstrates touch-based interaction and digital output control.</p>
-</div>
-<!-- ================= Microcontrollers Section Continued ================= -->
-<!-- Microcontroller 4 -->
-<div class="accordion">Arduino Nano</div>
-<div class="panel card">
-<p>Arduino Nano is a compact microcontroller board based on the ATmega328, ideal for small or portable projects.</p>
-<p>It has similar functionality to Arduino Uno but in a smaller form factor, with 14 digital I/O pins and 8 analog inputs.</p>
-<p>Applications: wearables, compact robotics, IoT prototypes. Engineers choose Nano for space-constrained designs without losing Arduino ecosystem support.</p>
-</div>
-
-<!-- Microcontroller 5 -->
-<div class="accordion">ESP8266</div>
-<div class="panel card">
-<p>ESP8266 is a Wi-Fi enabled microcontroller perfect for IoT projects requiring network connectivity.</p>
-<p>It features several GPIOs, ADC, PWM, SPI/I2C, and can be programmed using Arduino IDE or Lua. It is low-cost and energy-efficient.</p>
-<p>Applications: smart home devices, remote sensors, automation systems. Engineers value its simplicity and connectivity for internet-enabled projects.</p>
-</div>
-
-<!-- Microcontroller 6 -->
-<div class="accordion">STM32F103 (Blue Pill)</div>
-<div class="panel card">
-<p>STM32F103 is a 32-bit ARM Cortex-M3 microcontroller offering high-speed processing and rich peripherals.</p>
-<p>It includes GPIOs, ADC/DAC, timers, communication interfaces, and can handle more complex tasks than 8-bit boards.</p>
-<p>Applications: robotics, motor control, signal processing, IoT gateways. Engineers appreciate STM32 for performance and flexibility at low cost.</p>
-</div>
-
-<!-- Microcontroller 7 -->
-<div class="accordion">PIC16F877A</div>
-<div class="panel card">
-<p>PIC16F877A is an 8-bit microcontroller with multiple I/O ports, timers, and ADC, widely used in embedded systems education.</p>
-<p>It can be programmed in C or assembly and is suitable for small automation projects and learning microcontroller basics.</p>
-<p>Applications: sensor interfacing, simple automation, embedded control. Engineers use PIC for low-power and low-cost applications.</p>
-</div>
-
-<!-- Microcontroller 8 -->
-<div class="accordion">ATtiny85</div>
-<div class="panel card">
-<p>ATtiny85 is an 8-pin microcontroller suitable for very small projects or wearables.</p>
-<p>Despite small size, it offers digital I/O, PWM, and limited ADC. Programmable via Arduino IDE using USB programmer.</p>
-<p>Applications: miniature devices, LED controllers, low-power sensors. Engineers use it for ultra-compact embedded projects.</p>
-</div>
-
-<!-- Microcontroller 9 -->
-<div class="accordion">Teensy 4.0</div>
-<div class="panel card">
-<p>Teensy 4.0 is a powerful microcontroller with a 600 MHz ARM Cortex-M7 processor and extensive peripherals.</p>
-<p>It supports high-speed processing, advanced audio, and precise timing tasks, programmed via Arduino IDE or Teensy-specific tools.</p>
-<p>Applications: audio synthesis, robotics, fast sensor processing. Engineers value it for high-performance embedded systems.</p>
-</div>
-
-<!-- Microcontroller 10 -->
-<div class="accordion">Raspberry Pi Pico W</div>
-<div class="panel card">
-<p>Raspberry Pi Pico W adds Wi-Fi connectivity to the Pico board, enabling wireless IoT projects.</p>
-<p>It has dual-core ARM Cortex-M0+, GPIOs, ADC, PWM, I2C/SPI/UART interfaces, and is programmable in C/C++ or MicroPython.</p>
-<p>Applications: wireless sensor networks, IoT devices, remote monitoring. Engineers like it for low-cost wireless embedded solutions.</p>
-</div>
-
-<!-- Microcontroller 11 -->
-<div class="accordion">ESP32-CAM</div>
-<div class="panel card">
-<p>ESP32-CAM combines ESP32 microcontroller with a camera module for image/video capture and streaming over Wi-Fi.</p>
-<p>It features GPIOs, PWM, ADC, and supports Arduino IDE or MicroPython.</p>
-<p>Applications: security cameras, image-based IoT devices, AI experiments. Engineers choose ESP32-CAM for compact, connected imaging projects.</p>
-</div>
-
-<!-- Microcontroller 12 -->
-<div class="accordion">STM32F401</div>
-<div class="panel card">
-<p>STM32F401 is a 32-bit ARM Cortex-M4 microcontroller optimized for speed and efficiency in embedded applications.</p>
-<p>It includes high-resolution timers, ADC/DAC, and multiple communication interfaces.</p>
-<p>Applications: robotics, motor control, signal acquisition. Engineers use STM32F401 when high-speed processing with moderate complexity is needed.</p>
-</div>
-
-<!-- Microcontroller 13 -->
-<div class="accordion">Arduino Mega 2560</div>
-<div class="panel card">
-<p>Arduino Mega 2560 offers extended I/O (54 digital pins, 16 analog inputs) and memory compared to Uno, suitable for large projects.</p>
-<p>Ideal for robotics, 3D printers, and multi-sensor setups. Fully compatible with Arduino ecosystem.</p>
-<p>Applications: large automation, multi-sensor data logging, complex control systems. Engineers choose Mega when more I/O and memory are required.</p>
-</div>
-
-<!-- Microcontroller 14 -->
-<div class="accordion">ESP32-S2</div>
-<div class="panel card">
-<p>ESP32-S2 is a Wi-Fi-only microcontroller with enhanced security features and multiple peripherals.</p>
-<p>It supports GPIO, ADC, DAC, PWM, SPI/I2C/UART, and USB device mode.</p>
-<p>Applications: secure IoT devices, sensors, smart appliances. Engineers value its security and connectivity features.</p>
-</div>
-
-<!-- Microcontroller 15 -->
-<div class="accordion">BeagleBone Black</div>
-<div class="panel card">
-<p>BeagleBone Black is a Linux-based single-board computer with GPIO access, ideal for advanced embedded applications.</p>
-<p>It features ARM Cortex-A8 processor, USB, HDMI, and multiple I/O interfaces.</p>
-<p>Applications: robotics, industrial automation, networking devices. Engineers use it for projects needing OS-level features and embedded control.</p>
-</div>
-
-<!-- Microcontroller 16 -->
-<div class="accordion">Arduino Pro Mini</div>
-<div class="panel card">
-<p>Arduino Pro Mini is a small, low-power microcontroller board ideal for embedded projects where size and energy efficiency matter.</p>
-<p>It has 14 digital I/O pins, 6 analog inputs, and is programmable via FTDI USB adapter.</p>
-<p>Applications: wearables, small IoT devices, battery-powered sensors. Engineers use it for compact, energy-efficient designs.</p>
-</div>
-
-<!-- Microcontroller 17 -->
-<div class="accordion">STM32F746</div>
-<div class="panel card">
-<p>STM32F746 is a high-performance ARM Cortex-M7 microcontroller with TFT LCD support and multiple communication interfaces.</p>
-<p>It excels at graphics, motor control, and advanced data processing tasks.</p>
-<p>Applications: touch displays, advanced robotics, industrial controllers. Engineers use it for feature-rich embedded systems.</p>
-</div>
-
-<!-- Microcontroller 18 -->
-<div class="accordion">ESP32-S3</div>
-<div class="panel card">
-<p>ESP32-S3 adds AI instructions and vector processing to ESP32 series, enabling efficient AI/ML edge computing.</p>
-<p>It features Wi-Fi, Bluetooth, GPIOs, ADC/DAC, SPI/I2C/UART, and supports Arduino or MicroPython.</p>
-<p>Applications: edge AI devices, smart cameras, IoT ML projects. Engineers use it for AI-enabled embedded systems.</p>
-</div>
-
-<!-- Microcontroller 19 -->
-<div class="accordion">Teensy 3.6</div>
-<div class="panel card">
-<p>Teensy 3.6 is a high-performance ARM Cortex-M4 microcontroller board with large flash and RAM, suitable for demanding projects.</p>
-<p>It supports USB host/device, PWM, ADC, SPI/I2C, and high-speed computation.</p>
-<p>Applications: audio processing, robotics, scientific instrumentation. Engineers value Teensy 3.6 for complex embedded applications requiring high-speed processing.</p>
-</div>
-
-<!-- Microcontroller 20 -->
-<div class="accordion">Arduino MKR WiFi 1010</div>
-<div class="panel card">
-<p>Arduino MKR WiFi 1010 combines compact Arduino form with Wi-Fi and Bluetooth connectivity, ideal for IoT applications.</p>
-<p>It has multiple GPIOs, ADCs, PWM outputs, and low-power modes for battery-operated projects.</p>
-<p>Applications: smart devices, remote sensors, IoT prototypes. Engineers like it for easy wireless connectivity and Arduino compatibility.</p>
-</div>
-<!-- ================= Interview Questions Section Continued ================= -->
-<!-- Question 4 -->
-<div class="accordion">What is the difference between BJT and MOSFET?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> BJT is current-controlled, while MOSFET is voltage-controlled. BJT uses base current to control collector current; MOSFET uses gate voltage to control drain-source current.</p>
-<p><strong>Relevance:</strong> Understanding switching and amplification characteristics is crucial for circuit design.</p>
-<p><strong>Why engineers should know:</strong> Helps select appropriate transistor type for amplifiers, switches, and digital circuits.</p>
-</div>
-
-<!-- Question 5 -->
-<div class="accordion">Explain the function of a capacitor in a DC circuit.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> In DC, a capacitor initially charges, then blocks steady current while storing energy in the electric field.</p>
-<p><strong>Relevance:</strong> Capacitors are used for filtering, energy storage, and timing circuits.</p>
-<p><strong>Why engineers should know:</strong> Enables design of power supplies, timing circuits, and noise suppression circuits effectively.</p>
-</div>
-
-<!-- Question 6 -->
-<div class="accordion">What is the purpose of a pull-up/pull-down resistor?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Pull-up/pull-down resistors set a default logic level on a pin when no input is present.</p>
-<p><strong>Relevance:</strong> Prevents floating pins that may cause unpredictable behavior.</p>
-<p><strong>Why engineers should know:</strong> Critical for reliable digital circuit design and microcontroller input stability.</p>
-</div>
-
-<!-- Question 7 -->
-<div class="accordion">Explain the difference between AC and DC power.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> DC flows in one direction; AC alternates direction periodically.</p>
-<p><strong>Relevance:</strong> AC is used for power distribution; DC for electronics and batteries.</p>
-<p><strong>Why engineers should know:</strong> Helps in selecting power sources, designing converters, and understanding energy transmission.</p>
-</div>
-
-<!-- Question 8 -->
-<div class="accordion">What is Ohm’s Law?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Ohm's Law states V = I × R, where voltage = current × resistance.</p>
-<p><strong>Relevance:</strong> Fundamental principle to analyze circuits and calculate current, voltage, or resistance.</p>
-<p><strong>Why engineers should know:</strong> Basis for circuit analysis, component sizing, and troubleshooting.</p>
-</div>
-
-<!-- Question 9 -->
-<div class="accordion">Define power factor.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Power factor is the ratio of real power (W) to apparent power (VA) in AC circuits.</p>
-<p><strong>Relevance:</strong> Indicates efficiency of power usage in AC systems.</p>
-<p><strong>Why engineers should know:</strong> Essential for designing energy-efficient electrical systems and minimizing losses.</p>
-</div>
-
-<!-- Question 10 -->
-<div class="accordion">What is a logic gate?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Logic gates perform basic Boolean operations (AND, OR, NOT, etc.) on binary inputs to produce a single output.</p>
-<p><strong>Relevance:</strong> Fundamental building block of digital circuits and computers.</p>
-<p><strong>Why engineers should know:</strong> Helps in designing digital systems, microcontroller logic, and combinational/sequential circuits.</p>
-</div>
-
-<!-- Question 11 -->
-<div class="accordion">Explain the difference between analog and digital signals.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Analog signals vary continuously; digital signals are discrete (0 or 1).</p>
-<p><strong>Relevance:</strong> Important for choosing sensors, communication protocols, and data processing methods.</p>
-<p><strong>Why engineers should know:</strong> Essential for interface design, signal processing, and embedded system development.</p>
-</div>
-
-<!-- Question 12 -->
-<div class="accordion">What is the function of a rectifier?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> A rectifier converts AC to DC by allowing current to flow in one direction.</p>
-<p><strong>Relevance:</strong> Commonly used in power supplies to provide DC voltage to electronics.</p>
-<p><strong>Why engineers should know:</strong> Critical for designing power conversion circuits and reliable DC power sources.</p>
-</div>
-
-<!-- Question 13 -->
-<div class="accordion">Explain a voltage regulator.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> A voltage regulator maintains a constant output voltage despite variations in input voltage or load current.</p>
-<p><strong>Relevance:</strong> Ensures stable operation of electronic components and circuits.</p>
-<p><strong>Why engineers should know:</strong> Vital for designing reliable electronics, protecting sensitive ICs, and preventing malfunction.</p>
-</div>
-
-<!-- Question 14 -->
-<div class="accordion">What is PWM and why is it used?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Pulse Width Modulation (PWM) controls average voltage by varying the ON/OFF time of a signal.</p>
-<p><strong>Relevance:</strong> Used for motor speed control, LED brightness, and signal generation.</p>
-<p><strong>Why engineers should know:</strong> Enables efficient control of power and devices without energy loss as heat.</p>
-</div>
-
-<!-- Question 15 -->
-<div class="accordion">What is a microcontroller?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> A microcontroller is a compact integrated circuit with processor, memory, and peripherals designed for controlling devices.</p>
-<p><strong>Relevance:</strong> Core of embedded systems for automation and electronics projects.</p>
-<p><strong>Why engineers should know:</strong> Understanding microcontrollers is essential for designing smart devices and automation systems.</p>
-</div>
-
-<!-- Question 16 -->
-<div class="accordion">Explain the difference between UART, SPI, and I2C.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> UART is serial communication with 2 wires (TX/RX), SPI is fast synchronous communication with 4 wires, I2C is two-wire multi-device communication.</p>
-<p><strong>Relevance:</strong> Used for microcontroller and sensor communication.</p>
-<p><strong>Why engineers should know:</strong> Critical for selecting communication protocols and wiring sensors, displays, or other peripherals.</p>
-</div>
-
-<!-- Question 17 -->
-<div class="accordion">What is a pull-up resistor used for in microcontrollers?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> A pull-up resistor ensures a defined HIGH voltage level when no active device is driving the pin.</p>
-<p><strong>Relevance:</strong> Prevents floating input pins which may cause erratic behavior.</p>
-<p><strong>Why engineers should know:</strong> Ensures stable and predictable digital input readings.</p>
-</div>
-
-<!-- Question 18 -->
-<div class="accordion">What is debounce in digital circuits?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Debounce eliminates false triggers caused by mechanical switch contacts bouncing.</p>
-<p><strong>Relevance:</strong> Important for reliable button or switch input in microcontroller projects.</p>
-<p><strong>Why engineers should know:</strong> Prevents multiple unwanted signals and ensures correct logic operation.</p>
-</div>
-
-<!-- Question 19 -->
-<div class="accordion">Explain the working of a 555 timer.</div>
-<div class="panel card">
-<p><strong>Answer:</strong> 555 timer can operate in monostable, astable, or bistable mode to generate timed pulses or oscillations.</p>
-<p><strong>Relevance:</strong> Used in timing, pulse generation, LED blinking, or waveform generation.</p>
-<p><strong>Why engineers should know:</strong> Fundamental for designing timers, oscillators, and PWM-based circuits.</p>
-</div>
-
-<!-- Question 20 -->
-<div class="accordion">What are decoupling capacitors and why are they important?</div>
-<div class="panel card">
-<p><strong>Answer:</strong> Decoupling capacitors filter noise and provide local energy storage near ICs.</p>
-<p><strong>Relevance:</strong> Essential for stable operation of microcontrollers and digital ICs.</p>
-<p><strong>Why engineers should know:</strong> Prevents unexpected resets, glitches, or noise-related malfunctions in electronics projects.</p>
-</div>
-
-
+<div class="accordion">LED</div>
+<div class="panel">
+<p>LED (Light Emitting Diode) emits light when current flows through it in the forward direction.</p>
+<p>Electrons recombine with holes in a semiconductor junction to release energy as photons.</p>
+<p>Applications: indicators, displays, lighting, opto-isolation.</p>
+</div>
+
+</section>
+
+<script>
+  // ================= Accordion =================
+  const accordions = document.querySelectorAll(".accordion");
+  accordions.forEach(acc => {
+    acc.addEventListener("click", () => {
+      acc.classList.toggle("active");
+      const panel = acc.nextElementSibling;
+      if(panel.style.display === "block") panel.style.display = "none";
+      else panel.style.display = "block";
+      history.replaceState(null, null, '#' + acc.textContent.replace(/\s+/g,''));
+    });
+  });
+
+  // ================= Dark/Light Mode =================
+  const modeBtn = document.getElementById("modeToggle");
+  const currentMode = localStorage.getItem("mode");
+  if(currentMode === "dark") document.body.classList.add("dark");
+  modeBtn.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+
+  modeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("mode", document.body.classList.contains("dark") ? "dark" : "light");
+    modeBtn.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+  });
+
+  // ================= Search =================
+  const searchInput = document.getElementById("searchInput");
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+    accordions.forEach(acc => {
+      const panel = acc.nextElementSibling;
+      if(acc.textContent.toLowerCase().includes(filter) || panel.textContent.toLowerCase().includes(filter)){
+        acc.style.display = ""; panel.style.display = ""; 
+      } else { acc.style.display = "none"; panel.style.display = "none"; }
+    });
+  });
+</script>
+
+</div>
+</body>
+</html>
