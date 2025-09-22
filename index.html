@@ -256,3 +256,862 @@
 </div>
 </body>
 </html>
+<!-- ================= Components 6–20 ================= -->
+
+<!-- Component 6 -->
+<div class="accordion">Transistor (BJT)</div>
+<div class="panel">
+<p>Bipolar Junction Transistor (BJT) is a current-controlled device used for amplification and switching.</p>
+<p>It has three terminals: emitter, base, and collector. Small base current controls large collector-emitter current.</p>
+<p>Applications: signal amplification, switching circuits, digital logic.</p>
+</div>
+
+<!-- Component 7 -->
+<div class="accordion">Transistor (MOSFET)</div>
+<div class="panel">
+<p>MOSFET is a voltage-controlled transistor widely used in power electronics and digital circuits.</p>
+<p>It has three terminals: gate, drain, and source. Gate voltage controls current flow between drain and source.</p>
+<p>Applications: switching regulators, motor drivers, digital logic.</p>
+</div>
+
+<!-- Component 8 -->
+<div class="accordion">IC (Integrated Circuit)</div>
+<div class="panel">
+<p>An IC is a miniaturized electronic circuit with transistors, resistors, and capacitors on a single chip.</p>
+<p>ICs simplify complex circuits and reduce size, cost, and power consumption.</p>
+<p>Applications: microcontrollers, amplifiers, timers, sensors, logic gates.</p>
+</div>
+
+<!-- Component 9 -->
+<div class="accordion">Relay</div>
+<div class="panel">
+<p>A relay is an electromechanical switch controlled by a small current to switch a larger load.</p>
+<p>It uses an electromagnet to open or close contacts, isolating control and load circuits.</p>
+<p>Applications: motor control, home automation, protection circuits.</p>
+</div>
+
+<!-- Component 10 -->
+<div class="accordion">Switch</div>
+<div class="panel">
+<p>A switch allows or interrupts current flow in a circuit manually.</p>
+<p>Types include toggle, push-button, slide, DIP. They physically connect/disconnect the circuit path.</p>
+<p>Applications: power on/off, mode selection, signal routing.</p>
+</div>
+
+<!-- Component 11 -->
+<div class="accordion">Potentiometer</div>
+<div class="panel">
+<p>A potentiometer is a variable resistor used to adjust voltage or current in a circuit.</p>
+<p>It has three terminals; the wiper position determines resistance between terminals.</p>
+<p>Applications: volume controls, sensor calibration, adjustable voltage dividers.</p>
+</div>
+
+<!-- Component 12 -->
+<div class="accordion">Crystal Oscillator</div>
+<div class="panel">
+<p>A crystal oscillator generates precise frequency using piezoelectric effect in quartz crystals.</p>
+<p>It stabilizes clock signals in microcontrollers, computers, and communication devices.</p>
+<p>Applications: microcontroller clocks, radios, watches, communication systems.</p>
+</div>
+
+<!-- Component 13 -->
+<div class="accordion">Fuse</div>
+<div class="panel">
+<p>A fuse is a safety device that melts when current exceeds a rated value to protect circuits.</p>
+<p>It consists of a metal wire or strip that breaks under excessive current.</p>
+<p>Applications: power supplies, home appliances, automotive circuits.</p>
+</div>
+
+<!-- Component 14 -->
+<div class="accordion">Transformer</div>
+<div class="panel">
+<p>A transformer transfers electrical energy between circuits via magnetic induction.</p>
+<p>It can step up or step down voltage using primary and secondary windings.</p>
+<p>Applications: power distribution, adapters, isolation, audio amplifiers.</p>
+</div>
+
+<!-- Component 15 -->
+<div class="accordion">Temperature Sensor (e.g., LM35)</div>
+<div class="panel">
+<p>LM35 is an analog temperature sensor that outputs voltage proportional to temperature.</p>
+<p>It works using semiconductor junctions sensitive to heat changes.</p>
+<p>Applications: thermostats, environmental monitoring, microcontroller projects.</p>
+</div>
+
+<!-- Component 16 -->
+<div class="accordion">Light Sensor (LDR)</div>
+<div class="panel">
+<p>LDR (Light Dependent Resistor) changes resistance based on light intensity.</p>
+<p>Resistance decreases as light increases, enabling simple analog sensing.</p>
+<p>Applications: automatic lighting, brightness control, light-sensitive alarms.</p>
+</div>
+
+<!-- Component 17 -->
+<div class="accordion">Proximity Sensor (IR)</div>
+<div class="panel">
+<p>IR proximity sensors detect objects using infrared light reflection.</p>
+<p>They emit IR light and measure reflected signal to determine distance.</p>
+<p>Applications: obstacle detection, robotics, touchless switches.</p>
+</div>
+
+<!-- Component 18 -->
+<div class="accordion">Sound Sensor</div>
+<div class="panel">
+<p>Sound sensors detect audio signals and convert them into electrical signals.</p>
+<p>They typically use microphones with signal amplification and analog/digital output.</p>
+<p>Applications: sound-activated devices, noise level monitoring, voice-controlled circuits.</p>
+</div>
+
+<!-- Component 19 -->
+<div class="accordion">Ultrasonic Sensor</div>
+<div class="panel">
+<p>Ultrasonic sensors measure distance using sound waves above human hearing range.</p>
+<p>They emit ultrasonic pulses and calculate distance from echo time.</p>
+<p>Applications: robotics, level sensing, automatic parking systems.</p>
+</div>
+
+<!-- Component 20 -->
+<div class="accordion">Voltage Regulator (e.g., 7805)</div>
+<div class="panel">
+<p>Voltage regulators maintain a constant output voltage despite variations in input voltage or load.</p>
+<p>7805 provides 5V output and is widely used in electronics projects.</p>
+<p>Applications: power supplies, microcontroller circuits, LED drivers.</p>
+</div>
+
+<!-- ================= Electronics Projects Section ================= -->
+<section id="projects">
+<h2>Electronics Projects 📦</h2>
+
+<!-- Project 1 -->
+<div class="accordion">LED Blink using Arduino</div>
+<div class="panel">
+<p><strong>Description:</strong> A beginner project that blinks an LED using Arduino to understand digital output.</p>
+<p><strong>Components:</strong> Arduino Uno, LED, 220Ω resistor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LED anode to Arduino digital pin 13 and cathode to resistor to GND.</li>
+    <li>Open Arduino IDE and write the blink code.</li>
+    <li>Upload code and observe LED blinking every second.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino sends HIGH/LOW signals to the LED pin to turn it ON/OFF.</p>
+</div>
+
+<!-- Project 2 -->
+<div class="accordion">Temperature Monitor with LM35</div>
+<div class="panel">
+<p><strong>Description:</strong> Measures temperature using LM35 sensor and displays on serial monitor.</p>
+<p><strong>Components:</strong> Arduino Uno, LM35 sensor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LM35 VCC to 5V, GND to GND, output to A0.</li>
+    <li>Upload Arduino code to read analog value and convert to Celsius.</li>
+    <li>Monitor temperature on serial console.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> LM35 outputs voltage proportional to temperature; Arduino converts voltage to readable value.</p>
+</div>
+
+<!-- Project 3 -->
+<div class="accordion">Obstacle Detection with Ultrasonic Sensor</div>
+<div class="panel">
+<p><strong>Description:</strong> Detects obstacles using HC-SR04 sensor and triggers LED or buzzer.</p>
+<p><strong>Components:</strong> Arduino Uno, HC-SR04, LED, buzzer, resistors, breadboard, wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect HC-SR04 trig/echo pins to Arduino digital pins.</li>
+    <li>Connect LED/buzzer to output pins.</li>
+    <li>Upload code to measure distance and trigger output when obstacle is close.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino calculates distance from echo timing and activates alert output.</p>
+</div>
+
+<!-- ================= Electronics Projects 4–20 ================= -->
+
+<!-- Project 4 -->
+<div class="accordion">Automatic Night Light</div>
+<div class="panel">
+<p><strong>Description:</strong> Lights an LED automatically when ambient light falls below a threshold using an LDR sensor.</p>
+<p><strong>Components:</strong> Arduino, LDR, LED, 220Ω resistor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LDR in a voltage divider circuit to an analog pin.</li>
+    <li>Connect LED with resistor to digital pin.</li>
+    <li>Upload Arduino code to read light level and turn on LED when it is dark.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino reads LDR voltage and switches LED when value falls below threshold.</p>
+</div>
+
+<!-- Project 5 -->
+<div class="accordion">Servo Motor Control</div>
+<div class="panel">
+<p><strong>Description:</strong> Controls servo angle using Arduino PWM output.</p>
+<p><strong>Components:</strong> Arduino, servo motor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect servo power and GND to Arduino 5V and GND.</li>
+    <li>Connect signal wire to PWM pin.</li>
+    <li>Upload code to rotate servo to different angles with delay.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino generates PWM signal to set servo shaft angle.</p>
+</div>
+
+<!-- Project 6 -->
+<div class="accordion">Water Level Indicator</div>
+<div class="panel">
+<p><strong>Description:</strong> Monitors water level in a tank using float switches or probes and triggers LEDs/buzzer.</p>
+<p><strong>Components:</strong> Arduino, water sensors, LEDs, resistors, buzzer, breadboard.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Place water level sensors at desired heights.</li>
+    <li>Connect outputs to Arduino digital pins.</li>
+    <li>Upload code to monitor levels and activate outputs when water reaches thresholds.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Digital inputs detect water presence and trigger corresponding outputs for alerts.</p>
+</div>
+
+<!-- Project 7 -->
+<div class="accordion">Temperature Controlled Fan</div>
+<div class="panel">
+<p><strong>Description:</strong> Turns on a fan when temperature exceeds a set limit using LM35 sensor.</p>
+<p><strong>Components:</strong> Arduino, LM35, transistor or relay, fan, resistors, breadboard.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LM35 output to analog pin.</li>
+    <li>Control transistor/relay with Arduino digital pin to drive fan.</li>
+    <li>Upload code to read temperature and activate fan beyond threshold.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino reads temperature and triggers fan via switching device.</p>
+</div>
+
+<!-- Project 8 -->
+<div class="accordion">IR Obstacle Avoiding Robot</div>
+<div class="panel">
+<p><strong>Description:</strong> A small robot that changes direction to avoid obstacles using IR sensors.</p>
+<p><strong>Components:</strong> Arduino, IR sensors, DC motors, motor driver (L298N), battery, chassis, wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Mount motors and IR sensors on chassis.</li>
+    <li>Connect motors to L298N and Arduino.</li>
+    <li>Upload code to read sensors and steer robot away from obstacles.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> IR sensors detect objects and Arduino adjusts motor outputs to navigate safely.</p>
+</div>
+
+<!-- Project 9 -->
+<div class="accordion">Digital Dice using LEDs</div>
+<div class="panel">
+<p><strong>Description:</strong> Simulates dice rolling using push button and LEDs.</p>
+<p><strong>Components:</strong> Arduino, 7 LEDs, resistors, push button, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LEDs in dice pattern to digital pins.</li>
+    <li>Connect button to digital input pin.</li>
+    <li>Upload code to generate random number and display on LEDs when button pressed.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino generates random numbers and lights corresponding LEDs to simulate dice.</p>
+</div>
+
+<!-- Project 10 -->
+<div class="accordion">Traffic Light Controller</div>
+<div class="panel">
+<p><strong>Description:</strong> Simulates a traffic signal sequence using LEDs and Arduino.</p>
+<p><strong>Components:</strong> Arduino, red/yellow/green LEDs, resistors, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LEDs to Arduino digital pins.</li>
+    <li>Upload code to cycle LEDs in traffic light pattern with delays.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino sequentially turns LEDs ON/OFF to mimic traffic light timing.</p>
+</div>
+
+<!-- Project 11 -->
+<div class="accordion">Servo-Controlled Door Lock</div>
+<div class="panel">
+<p><strong>Description:</strong> Opens or closes a door lock using servo controlled by Arduino.</p>
+<p><strong>Components:</strong> Arduino, servo motor, push button or keypad, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect servo to Arduino PWM pin.</li>
+    <li>Use button/keypad input to trigger servo rotation.</li>
+    <li>Upload code to rotate servo for lock/unlock action.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino reads input and rotates servo to control mechanical lock position.</p>
+</div>
+
+<!-- Project 12 -->
+<div class="accordion">Soil Moisture Monitoring</div>
+<div class="panel">
+<p><strong>Description:</strong> Measures soil moisture and optionally activates water pump.</p>
+<p><strong>Components:</strong> Arduino, soil moisture sensor, relay, water pump, breadboard, wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect sensor to analog input.</li>
+    <li>Relay controls water pump via digital output.</li>
+    <li>Upload code to activate pump when soil is dry.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino monitors soil moisture voltage and triggers water supply automatically.</p>
+</div>
+
+<!-- Project 13 -->
+<div class="accordion">Burglar Alarm System</div>
+<div class="panel">
+<p><strong>Description:</strong> Activates buzzer when motion is detected using PIR sensor.</p>
+<p><strong>Components:</strong> Arduino, PIR motion sensor, buzzer, LED, breadboard, wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect PIR output to Arduino input.</li>
+    <li>Connect buzzer/LED to digital outputs.</li>
+    <li>Upload code to monitor PIR and trigger alerts on detection.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino reads PIR sensor digital signal and activates alarm outputs.</p>
+</div>
+
+<!-- Project 14 -->
+<div class="accordion">Temperature & Humidity Monitor</div>
+<div class="panel">
+<p><strong>Description:</strong> Uses DHT11/22 sensor to read environmental conditions.</p>
+<p><strong>Components:</strong> Arduino, DHT sensor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect sensor data pin to Arduino digital input.</li>
+    <li>Upload code using DHT library to read temperature/humidity.</li>
+    <li>Display readings on serial monitor or LCD.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino communicates with sensor to provide digital temperature and humidity readings.</p>
+</div>
+
+<!-- Project 15 -->
+<div class="accordion">LED Mood Lamp</div>
+<div class="panel">
+<p><strong>Description:</strong> Changes LED colors dynamically using RGB LED controlled by Arduino.</p>
+<p><strong>Components:</strong> Arduino, RGB LED, resistors, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect RGB LED pins to PWM outputs via resistors.</li>
+    <li>Upload code to cycle colors or respond to input.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino uses PWM to mix red, green, blue light to create various colors.</p>
+</div>
+
+<!-- Project 16 -->
+<div class="accordion">Digital Thermostat</div>
+<div class="panel">
+<p><strong>Description:</strong> Controls heating/cooling devices based on temperature readings.</p>
+<p><strong>Components:</strong> Arduino, temperature sensor, relay, heater/fan, breadboard.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect sensor to Arduino analog input.</li>
+    <li>Relay controls heater/fan based on temperature thresholds.</li>
+    <li>Upload code for automatic control.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino reads temperature and toggles relay outputs to maintain set temperature.</p>
+</div>
+
+<!-- Project 17 -->
+<div class="accordion">PWM Fan Speed Controller</div>
+<div class="panel">
+<p><strong>Description:</strong> Controls DC fan speed using PWM from Arduino.</p>
+<p><strong>Components:</strong> Arduino, N-MOSFET, fan, resistors, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect fan to MOSFET controlled by PWM pin.</li>
+    <li>Upload code to vary duty cycle for speed adjustment.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino varies PWM duty cycle to adjust average voltage and control fan speed efficiently.</p>
+</div>
+
+<!-- Project 18 -->
+<div class="accordion">Music Player with Arduino</div>
+<div class="panel">
+<p><strong>Description:</strong> Plays simple tunes using buzzer and Arduino.</p>
+<p><strong>Components:</strong> Arduino, piezo buzzer, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect buzzer to digital pin with series resistor.</li>
+    <li>Upload code with tone/frequency sequences.</li>
+    <li>Observe the buzzer playing the tune.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino generates PWM frequencies to produce audible tones on the buzzer.</p>
+</div>
+
+<!-- Project 19 -->
+<div class="accordion">RGB Mood Lamp with Button Control</div>
+<div class="panel">
+<p><strong>Description:</strong> Changes LED colors using a push button to cycle modes.</p>
+<p><strong>Components:</strong> Arduino, RGB LED, push button, resistors, breadboard.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect RGB LED to PWM pins and button to digital input.</li>
+    <li>Upload code to change color on button press.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Button input is read by Arduino to switch between predefined RGB colors.</p>
+</div>
+
+<!-- Project 20 -->
+<div class="accordion">Morse Code LED</div>
+<div class="panel">
+<p><strong>Description:</strong> Blink LED to display messages in Morse code using Arduino.</p>
+<p><strong>Components:</strong> Arduino, LED, resistor, breadboard, jumper wires.</p>
+<p><strong>Steps:</strong>
+  <ol>
+    <li>Connect LED to digital pin with resistor.</li>
+    <li>Upload code to blink Morse code sequences.</li>
+  </ol>
+</p>
+<p><strong>Explanation:</strong> Arduino toggles LED ON/OFF to represent dots and dashes of Morse code messages.</p>
+</div>
+
+<!-- ================= Microcontrollers Section ================= -->
+<section id="microcontrollers">
+<h2>Microcontrollers 💻</h2>
+
+<!-- Microcontroller 1 -->
+<div class="accordion">Arduino Uno</div>
+<div class="panel">
+<p><strong>Description:</strong> Popular 8-bit microcontroller board based on ATmega328P.</p>
+<p>It has 14 digital I/O pins, 6 analog inputs, and supports USB programming.</p>
+<p><strong>Applications:</strong> Beginners projects, robotics, sensors, LEDs, PWM control.</p>
+<p><strong>Why Engineers Should Care:</strong> Easy to learn, vast community support, ideal for prototyping and learning embedded systems.</p>
+</div>
+
+<!-- Microcontroller 2 -->
+<div class="accordion">ESP32</div>
+<div class="panel">
+<p><strong>Description:</strong> Advanced microcontroller with Wi-Fi and Bluetooth built-in.</p>
+<p>Dual-core processor, multiple GPIOs, ADC/DAC, PWM, and deep sleep modes.</p>
+<p><strong>Applications:</strong> IoT devices, remote monitoring, smart home, Wi-Fi-enabled projects.</p>
+<p><strong>Why Engineers Should Care:</strong> Powerful and versatile for connected embedded applications, faster than Arduino Uno.</p>
+</div>
+
+<!-- Microcontroller 3 -->
+<div class="accordion">Raspberry Pi Pico</div>
+<div class="panel">
+<p><strong>Description:</strong> Low-cost microcontroller board based on RP2040 dual-core ARM Cortex-M0+ processor.</p>
+<p>Supports MicroPython and C/C++ SDK, with multiple I/O options.</p>
+<p><strong>Applications:</strong> Embedded projects, sensors, robotics, learning microcontrollers.</p>
+<p><strong>Why Engineers Should Care:</strong> Affordable, flexible programming, ideal for small-scale embedded applications and learning.</p>
+</div>
+<!-- ================= Microcontrollers 4–20 ================= -->
+
+<!-- Microcontroller 4 -->
+<div class="accordion">Arduino Nano</div>
+<div class="panel">
+<p><strong>Description:</strong> Compact version of Arduino Uno with ATmega328P, breadboard-friendly form factor.</p>
+<p>Has similar pins as Uno but smaller size, supports USB programming.</p>
+<p><strong>Applications:</strong> Small robotics, wearable projects, portable embedded systems.</p>
+<p><strong>Why Engineers Should Care:</strong> Ideal for space-constrained projects while maintaining Arduino ecosystem compatibility.</p>
+</div>
+
+<!-- Microcontroller 5 -->
+<div class="accordion">ESP8266</div>
+<div class="panel">
+<p><strong>Description:</strong> Low-cost Wi-Fi microcontroller, single-core processor, small footprint.</p>
+<p>GPIO pins are limited; supports Arduino IDE programming.</p>
+<p><strong>Applications:</strong> IoT projects, Wi-Fi sensors, home automation.</p>
+<p><strong>Why Engineers Should Care:</strong> Extremely affordable and widely supported for connected devices.</p>
+</div>
+
+<!-- Microcontroller 6 -->
+<div class="accordion">STM32F103 (Blue Pill)</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M3 32-bit microcontroller with rich peripheral support.</p>
+<p>Features multiple GPIOs, ADCs, timers, and communication interfaces.</p>
+<p><strong>Applications:</strong> Robotics, industrial automation, high-performance embedded systems.</p>
+<p><strong>Why Engineers Should Care:</strong> Provides ARM-level performance at low cost, ideal for advanced embedded development.</p>
+</div>
+
+<!-- Microcontroller 7 -->
+<div class="accordion">STM32F401</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M4 microcontroller, higher clock, floating point support.</p>
+<p>Includes multiple ADCs, DACs, timers, communication interfaces.</p>
+<p><strong>Applications:</strong> Motor control, IoT, audio processing.</p>
+<p><strong>Why Engineers Should Care:</strong> Suitable for performance-demanding embedded projects with floating-point calculations.</p>
+</div>
+
+<!-- Microcontroller 8 -->
+<div class="accordion">ATtiny85</div>
+<div class="panel">
+<p><strong>Description:</strong> Ultra-small 8-bit microcontroller with 8 KB flash memory.</p>
+<p>Compact and low-power, ideal for minimal embedded systems.</p>
+<p><strong>Applications:</strong> Wearables, simple sensors, compact projects.</p>
+<p><strong>Why Engineers Should Care:</strong> Tiny footprint, low power, perfect for highly constrained applications.</p>
+</div>
+
+<!-- Microcontroller 9 -->
+<div class="accordion">Teensy 4.0</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M7, extremely fast (600 MHz), 32-bit microcontroller.</p>
+<p>High-speed digital I/O, audio libraries, supports USB MIDI/Serial.</p>
+<p><strong>Applications:</strong> Audio processing, robotics, high-speed embedded projects.</p>
+<p><strong>Why Engineers Should Care:</strong> High-performance microcontroller in small form factor, versatile for demanding applications.</p>
+</div>
+
+<!-- Microcontroller 10 -->
+<div class="accordion">Raspberry Pi Pico W</div>
+<div class="panel">
+<p><strong>Description:</strong> Pico board with Wi-Fi module integrated, RP2040 dual-core ARM Cortex-M0+.</p>
+<p>Supports MicroPython and C/C++, has 26 multi-function GPIO pins.</p>
+<p><strong>Applications:</strong> IoT devices, networked sensors, remote monitoring.</p>
+<p><strong>Why Engineers Should Care:</strong> Combines low-cost RP2040 with wireless connectivity for IoT applications.</p>
+</div>
+
+<!-- Microcontroller 11 -->
+<div class="accordion">PIC16F877A</div>
+<div class="panel">
+<p><strong>Description:</strong> 8-bit PIC microcontroller, widely used in industrial projects.</p>
+<p>Features 33 I/O pins, ADC, timers, and UART.</p>
+<p><strong>Applications:</strong> Embedded control, automation, educational projects.</p>
+<p><strong>Why Engineers Should Care:</strong> Popular in classic embedded designs, reliable and robust for long-term applications.</p>
+</div>
+
+<!-- Microcontroller 12 -->
+<div class="accordion">PIC18F4550</div>
+<div class="panel">
+<p><strong>Description:</strong> 8-bit microcontroller with USB support, higher performance than PIC16 series.</p>
+<p>Includes ADCs, timers, UART, and PWM modules.</p>
+<p><strong>Applications:</strong> USB interfacing, industrial control, data acquisition.</p>
+<p><strong>Why Engineers Should Care:</strong> Useful for projects requiring USB communication and moderate processing power.</p>
+</div>
+
+<!-- Microcontroller 13 -->
+<div class="accordion">STM32F407</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M4 microcontroller with floating point unit, high clock speed.</p>
+<p>Rich peripherals: ADC/DAC, timers, communication interfaces.</p>
+<p><strong>Applications:</strong> Motor control, audio, IoT, advanced robotics.</p>
+<p><strong>Why Engineers Should Care:</strong> Professional-grade performance for high-demand embedded systems.</p>
+</div>
+
+<!-- Microcontroller 14 -->
+<div class="accordion">Arduino Mega 2560</div>
+<div class="panel">
+<p><strong>Description:</strong> Large Arduino board with ATmega2560, 54 digital I/O, 16 analog inputs.</p>
+<p>Great for complex projects requiring many pins.</p>
+<p><strong>Applications:</strong> 3D printers, CNC controllers, robotics.</p>
+<p><strong>Why Engineers Should Care:</strong> Ideal for multi-I/O applications, educational and prototyping projects.</p>
+</div>
+
+<!-- Microcontroller 15 -->
+<div class="accordion">ESP32-S2</div>
+<div class="panel">
+<p><strong>Description:</strong> Single-core ESP32 variant with Wi-Fi and improved security features.</p>
+<p>Supports USB OTG, ADC/DAC, PWM.</p>
+<p><strong>Applications:</strong> IoT devices, secure sensors, small connected projects.</p>
+<p><strong>Why Engineers Should Care:</strong> Enhanced security and IoT capabilities for modern connected systems.</p>
+</div>
+
+<!-- Microcontroller 16 -->
+<div class="accordion">Arduino Leonardo</div>
+<div class="panel">
+<p><strong>Description:</strong> Arduino board based on ATmega32u4 with USB HID capabilities.</p>
+<p>Can emulate keyboard, mouse, or joystick over USB.</p>
+<p><strong>Applications:</strong> Human interface projects, automation, input emulation.</p>
+<p><strong>Why Engineers Should Care:</strong> Perfect for projects that require USB device emulation.</p>
+</div>
+
+<!-- Microcontroller 17 -->
+<div class="accordion">STM32F030</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M0, entry-level STM32 microcontroller.</p>
+<p>Low cost, small size, ADC, timers, GPIOs.</p>
+<p><strong>Applications:</strong> Basic embedded learning, low-power IoT, simple control systems.</p>
+<p><strong>Why Engineers Should Care:</strong> Affordable way to learn ARM microcontrollers and small embedded applications.</p>
+</div>
+
+<!-- Microcontroller 18 -->
+<div class="accordion">ATmega32</div>
+<div class="panel">
+<p><strong>Description:</strong> 8-bit AVR microcontroller with 32 KB flash memory, 32 I/O pins.</p>
+<p>Popular for education and DIY projects.</p>
+<p><strong>Applications:</strong> Embedded projects, automation, sensor interfacing.</p>
+<p><strong>Why Engineers Should Care:</strong> Classic microcontroller, widely used and well-documented.</p>
+</div>
+
+<!-- Microcontroller 19 -->
+<div class="accordion">Teensy 3.2</div>
+<div class="panel">
+<p><strong>Description:</strong> ARM Cortex-M4, 72 MHz, compact form factor with USB HID support.</p>
+<p>Good for MIDI, audio, and embedded projects.</p>
+<p><strong>Applications:</strong> Audio processing, interactive devices, robotics.</p>
+<p><strong>Why Engineers Should Care:</strong> High performance in small size, perfect for portable applications.</p>
+</div>
+
+<!-- Microcontroller 20 -->
+<div class="accordion">ESP32-C3</div>
+<div class="panel">
+<p><strong>Description:</strong> Low-power RISC-V single-core Wi-Fi & Bluetooth 5.0 microcontroller.</p>
+<p>Supports GPIO, ADC, PWM, UART, SPI, I2C.</p>
+<p><strong>Applications:</strong> IoT, wireless sensors, smart devices.</p>
+<p><strong>Why Engineers Should Care:</strong> Efficient, modern RISC-V architecture with wireless connectivity for IoT solutions.</p>
+</div>
+
+<!-- ================= Electronics Engineering Interview Questions ================= -->
+<section id="questions">
+<h2>Interview Questions ❓</h2>
+
+<!-- Question 1 -->
+<div class="accordion">What is the difference between a microcontroller and a microprocessor?</div>
+<div class="panel">
+<p><strong>Answer:</strong> A microcontroller is a compact system with CPU, memory, and peripherals on a single chip; a microprocessor only has CPU and requires external memory and peripherals.</p>
+<p><strong>Relevance:</strong> Knowing the difference helps in choosing the right device for embedded vs computing applications.</p>
+<p><strong>Practical Implication:</strong> Microcontrollers are used for automation and IoT; microprocessors are used for PCs and servers.</p>
+</div>
+
+<!-- Question 2 -->
+<div class="accordion">Explain the working of an NPN transistor.</div>
+<div class="panel">
+<p><strong>Answer:</strong> In an NPN transistor, a small current into the base allows a larger current to flow from collector to emitter.</p>
+<p><strong>Relevance:</strong> Essential for designing switching and amplification circuits.</p>
+<p><strong>Practical Implication:</strong> Widely used in signal amplification, motor drivers, and digital logic circuits.</p>
+</div>
+
+<!-- Question 3 -->
+<div class="accordion">What is the purpose of a capacitor in a DC power supply?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Capacitors smooth voltage fluctuations by storing and releasing charge, reducing ripples in DC output.</p>
+<p><strong>Relevance:</strong> Understanding helps in designing stable power supplies.</p>
+<p><strong>Practical Implication:</strong> Prevents damage to microcontrollers and circuits due to unstable voltage.</p>
+</div>
+<!-- ================= Electronics Engineering Interview Questions 4–20 ================= -->
+
+<!-- Question 4 -->
+<div class="accordion">What is a pull-up and pull-down resistor?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Pull-up resistors connect input to VCC, pull-down resistors connect input to GND to define logic level when no input is active.</p>
+<p><strong>Relevance:</strong> Prevents floating input pins that can cause unpredictable behavior.</p>
+<p><strong>Practical Implication:</strong> Ensures stable digital readings for switches, sensors, and microcontroller pins.</p>
+</div>
+
+<!-- Question 5 -->
+<div class="accordion">Explain PWM and its applications.</div>
+<div class="panel">
+<p><strong>Answer:</strong> Pulse Width Modulation (PWM) is a technique to control analog behavior using digital signals by varying the duty cycle of a square wave.</p>
+<p><strong>Relevance:</strong> Used to control motors, LEDs, and voltage levels efficiently.</p>
+<p><strong>Practical Implication:</strong> Enables engineers to manage speed, brightness, and power efficiently without wasting energy.</p>
+</div>
+
+<!-- Question 6 -->
+<div class="accordion">What is the difference between AC and DC?</div>
+<div class="panel">
+<p><strong>Answer:</strong> AC (Alternating Current) reverses direction periodically, DC (Direct Current) flows in a single direction.</p>
+<p><strong>Relevance:</strong> Critical for power supply design, motor selection, and electronics interfacing.</p>
+<p><strong>Practical Implication:</strong> Helps in selecting correct power sources for circuits and devices.</p>
+</div>
+
+<!-- Question 7 -->
+<div class="accordion">What is a logic gate?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Logic gates perform basic Boolean operations like AND, OR, NOT on digital signals.</p>
+<p><strong>Relevance:</strong> Core building blocks of digital electronics.</p>
+<p><strong>Practical Implication:</strong> Used in microcontrollers, processors, and embedded systems for decision making.</p>
+</div>
+
+<!-- Question 8 -->
+<div class="accordion">Explain the difference between BJT and MOSFET.</div>
+<div class="panel">
+<p><strong>Answer:</strong> BJT is current-controlled, MOSFET is voltage-controlled. BJTs are slower, MOSFETs have high input impedance.</p>
+<p><strong>Relevance:</strong> Helps choose appropriate transistor for amplification or switching.</p>
+<p><strong>Practical Implication:</strong> Correct selection affects efficiency, speed, and thermal performance.</p>
+</div>
+
+<!-- Question 9 -->
+<div class="accordion">What is an op-amp and its use?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Operational Amplifier (op-amp) is a high-gain voltage amplifier with differential inputs.</p>
+<p><strong>Relevance:</strong> Essential for analog signal processing, amplification, and filtering.</p>
+<p><strong>Practical Implication:</strong> Engineers use op-amps in sensors, audio circuits, and control systems.</p>
+</div>
+
+<!-- Question 10 -->
+<div class="accordion">What is the difference between series and parallel circuits?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Series circuits share the same current, parallel circuits share the same voltage across branches.</p>
+<p><strong>Relevance:</strong> Understanding impacts voltage/current distribution and component selection.</p>
+<p><strong>Practical Implication:</strong> Crucial for designing safe and reliable circuits.</p>
+</div>
+
+<!-- Question 11 -->
+<div class="accordion">What is a microcontroller watchdog timer?</div>
+<div class="panel">
+<p><strong>Answer:</strong> A timer that resets the microcontroller if it becomes unresponsive due to software errors.</p>
+<p><strong>Relevance:</strong> Ensures reliability in embedded systems.</p>
+<p><strong>Practical Implication:</strong> Protects critical applications like robotics, IoT devices, and safety systems.</p>
+</div>
+
+<!-- Question 12 -->
+<div class="accordion">Explain the difference between EEPROM and Flash memory.</div>
+<div class="panel">
+<p><strong>Answer:</strong> EEPROM allows byte-level writes, Flash allows block-level writes and is faster but less flexible.</p>
+<p><strong>Relevance:</strong> Determines how programs and data are stored in microcontrollers.</p>
+<p><strong>Practical Implication:</strong> Engineers choose memory type for firmware storage, data logging, or configuration storage.</p>
+</div>
+
+<!-- Question 13 -->
+<div class="accordion">What is the function of a crystal oscillator in microcontrollers?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Provides a stable clock signal for timing operations and synchronization.</p>
+<p><strong>Relevance:</strong> Timing accuracy is critical for serial communication and time-dependent tasks.</p>
+<p><strong>Practical Implication:</strong> Enables reliable sensor reading, PWM control, and communication protocols.</p>
+</div>
+
+<!-- Question 14 -->
+<div class="accordion">What are pull-up and pull-down resistors used for in I2C?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Ensure SDA and SCL lines are pulled to high logic when no device is driving the bus.</p>
+<p><strong>Relevance:</strong> Prevents undefined behavior in I2C communication.</p>
+<p><strong>Practical Implication:</strong> Essential for reliable sensor and module communication in microcontroller projects.</p>
+</div>
+
+<!-- Question 15 -->
+<div class="accordion">What is an ADC and DAC?</div>
+<div class="panel">
+<p><strong>Answer:</strong> ADC converts analog signals to digital; DAC converts digital signals to analog.</p>
+<p><strong>Relevance:</strong> Key for sensor interfacing and analog output control.</p>
+<p><strong>Practical Implication:</strong> Engineers use ADC/DAC for reading analog sensors and controlling analog devices.</p>
+</div>
+
+<!-- Question 16 -->
+<div class="accordion">What is debounce in switch circuits?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Debouncing eliminates multiple false signals caused by mechanical switch bounce.</p>
+<p><strong>Relevance:</strong> Ensures accurate digital input readings.</p>
+<p><strong>Practical Implication:</strong> Avoids multiple triggers in push buttons and sensors.</p>
+</div>
+
+<!-- Question 17 -->
+<div class="accordion">Explain what a logic level converter is.</div>
+<div class="panel">
+<p><strong>Answer:</strong> Converts voltage levels between different logic families, e.g., 3.3V to 5V.</p>
+<p><strong>Relevance:</strong> Needed when interfacing microcontrollers or modules with different voltages.</p>
+<p><strong>Practical Implication:</strong> Prevents damage to components and ensures proper signal interpretation.</p>
+</div>
+
+<!-- Question 18 -->
+<div class="accordion">What is PWM duty cycle?</div>
+<div class="panel">
+<p><strong>Answer:</strong> Percentage of time PWM signal is HIGH in one period.</p>
+<p><strong>Relevance:</strong> Determines average voltage applied to devices.</p>
+<p><strong>Practical Implication:</strong> Controls motor speed, LED brightness, and analog simulation.</p>
+</div>
+
+<!-- Question 19 -->
+<div class="accordion">Explain the function of a voltage regulator IC.</div>
+<div class="panel">
+<p><strong>Answer:</strong> Maintains a constant output voltage regardless of input variation or load current.</p>
+<p><strong>Relevance:</strong> Protects sensitive electronics from voltage fluctuations.</p>
+<p><strong>Practical Implication:</strong> Essential in microcontroller circuits, LEDs, and power-sensitive projects.</p>
+</div>
+
+<!-- Question 20 -->
+<div class="accordion">What is the difference between TTL and CMOS logic?</div>
+<div class="panel">
+<p><strong>Answer:</strong> TTL uses bipolar transistors, fast but higher power; CMOS uses MOSFETs, low power, wider voltage range.</p>
+<p><strong>Relevance:</strong> Affects interfacing and power consumption in digital circuits.</p>
+<p><strong>Practical Implication:</strong> Engineers choose logic type based on speed, power, and compatibility.</p>
+</div>
+
+<!-- ================= Print / Export Button ================= -->
+<button onclick="window.print()" class="print-btn">🖨 Print / Export</button>
+
+<!-- ================= Smooth Scroll Highlight JS ================= -->
+<script>
+document.querySelectorAll('.accordion').forEach(acc => {
+  acc.addEventListener('click', function() {
+    this.classList.toggle('active');
+    let panel = this.nextElementSibling;
+    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+    // update hash for deep-link
+    history.replaceState(null, null, '#' + this.textContent.trim().replace(/\s+/g,'-'));
+  });
+});
+
+// Dark mode toggle with persistence
+const toggle = document.getElementById('darkToggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+});
+if(localStorage.getItem('darkMode') === 'true'){ document.body.classList.add('dark-mode'); }
+
+// Smooth scroll for sidebar anchors
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+  });
+});
+</script>
+
+<style>
+/* ================= Print Button ================= */
+.print-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,150,255,0.8);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.print-btn:hover { background: rgba(0,150,255,1); }
+
+/* ================= Accordion ================= */
+.accordion {
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 10px 0;
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.accordion:hover { background: rgba(255,255,255,0.3); }
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  padding: 0 20px;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 8px;
+}
+
+/* ================= Dark Mode ================= */
+body.dark-mode {
+  background: #1c1c1e;
+  color: #f5f5f7;
+}
+body.dark-mode .accordion { background: rgba(255,255,255,0.05); }
+body.dark-mode .panel { background: rgba(255,255,255,0.05); }
+
+/* ================= Print Styling ================= */
+@media print {
+  body * { visibility: hidden; }
+  .panel, .panel * { visibility: visible; }
+  .panel { position: absolute; top: 0; left: 0; width: 100%; }
+}
+</style>
+
