@@ -14,7 +14,7 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        :root, :root.light-mode {
+        :root {
             --primary-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
             --secondary-gradient: linear-gradient(135deg, #43cea2, #185a9d);
             --accent-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
@@ -33,7 +33,7 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
-        :root.dark-mode {
+        .dark-mode {
             --primary-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
             --secondary-gradient: linear-gradient(135deg, #43cea2, #185a9d);
             --accent-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
@@ -456,7 +456,7 @@
         }
     </style>
 </head>
-<body class="light-mode">
+<body>
     <header>
         <div class="container">
             <div class="flex items-center justify-between">
@@ -870,35 +870,36 @@
         </div>
     </footer>
 
-    <div class="mode-toggle">
+    <div class="mode-toggle" id="modeToggle">
         <i class="fas fa-moon"></i>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Theme toggle functionality
-            const modeToggle = document.querySelector('.mode-toggle');
+            const modeToggle = document.getElementById('modeToggle');
             const body = document.body;
             const icon = modeToggle.querySelector('i');
             
-            // Set initial theme based on time or preference
-            const hour = new Date().getHours();
-            if (hour >= 18 || hour < 6) {
-                body.classList.remove('light-mode');
+            // Check for saved theme preference or respect OS preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 body.classList.add('dark-mode');
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             }
             
             modeToggle.addEventListener('click', () => {
-                if (body.classList.contains('light-mode')) {
-                    body.classList.remove('light-mode');
-                    body.classList.add('dark-mode');
+                body.classList.toggle('dark-mode');
+                
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
                     icon.classList.remove('fa-moon');
                     icon.classList.add('fa-sun');
                 } else {
-                    body.classList.remove('dark-mode');
-                    body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
                     icon.classList.remove('fa-sun');
                     icon.classList.add('fa-moon');
                 }
