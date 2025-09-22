@@ -11,56 +11,101 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        :root {
+        :root, :root.light-mode {
             --primary-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
             --secondary-gradient: linear-gradient(135deg, #43cea2, #185a9d);
             --accent-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
             --purple-gradient: linear-gradient(135deg, #4776E6, #8E54E9);
-            --dark-bg: #0f172a;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
+            
+            /* Light Mode Colors */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(248, 250, 252, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        :root.dark-mode {
+            --primary-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
+            --secondary-gradient: linear-gradient(135deg, #43cea2, #185a9d);
+            --accent-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            --purple-gradient: linear-gradient(135deg, #4776E6, #8E54E9);
+            
+            /* Dark Mode Colors */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.3);
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: var(--text-light);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
         .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--shadow-color);
             padding: 25px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .glass-panel:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 40px var(--shadow-color);
         }
 
         header {
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(15, 23, 42, 0.8);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
         }
 
         .logo {
@@ -82,21 +127,31 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav a {
-            color: var(--text-light);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            padding: 10px 15px;
+            padding: 8px 15px;
             border-radius: 15px;
             transition: all 0.3s ease;
         }
 
         nav a:hover, nav a.active {
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(110, 142, 251, 0.4);
+            background: rgba(110, 142, 251, 0.2);
+            box-shadow: 0 0 15px rgba(110, 142, 251, 0.3);
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
         }
 
         .hero {
@@ -107,7 +162,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             background: linear-gradient(to right, #6e8efb, #a777e3, #ff6b6b);
             -webkit-background-clip: text;
@@ -117,7 +172,7 @@
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 30px;
         }
@@ -146,13 +201,13 @@
 
         .btn-secondary {
             background: transparent;
-            color: var(--text-light);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            border: 2px solid var(--card-border);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+            background: rgba(110, 142, 251, 0.1);
+            box-shadow: 0 5px 15px rgba(110, 142, 251, 0.2);
         }
 
         section {
@@ -162,7 +217,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 50px;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -179,31 +234,28 @@
             padding: 25px;
             border-radius: 20px;
             height: 100%;
+            border: 1px solid var(--card-border);
         }
 
         .component-card {
-            background: rgba(67, 206, 162, 0.1);
-            border: 1px solid rgba(67, 206, 162, 0.2);
+            background: linear-gradient(135deg, rgba(67, 206, 162, 0.1), rgba(24, 90, 157, 0.1));
         }
 
         .project-card {
-            background: rgba(110, 142, 251, 0.1);
-            border: 1px solid rgba(110, 142, 251, 0.2);
+            background: linear-gradient(135deg, rgba(110, 142, 251, 0.1), rgba(167, 119, 227, 0.1));
         }
 
         .mc-card {
-            background: rgba(255, 107, 107, 0.1);
-            border: 1px solid rgba(255, 107, 107, 0.2);
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
         }
 
         .question-card {
-            background: rgba(167, 119, 227, 0.1);
-            border: 1px solid rgba(167, 119, 227, 0.2);
+            background: linear-gradient(135deg, rgba(167, 119, 227, 0.1), rgba(71, 118, 230, 0.1));
         }
 
         .card-icon {
             font-size: 40px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: var(--purple-gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -211,13 +263,15 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
+            color: var(--text-primary);
         }
 
         .card-content {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .tabs {
@@ -229,15 +283,19 @@
         }
 
         .tab {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
             cursor: pointer;
             transition: all 0.3s ease;
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+            font-size: 0.9rem;
         }
 
         .tab.active {
             background: var(--accent-gradient);
+            color: white;
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
         }
 
@@ -259,7 +317,7 @@
             padding: 40px 0;
             text-align: center;
             margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--card-border);
         }
 
         .social-icons {
@@ -270,7 +328,7 @@
         }
 
         .social-icons a {
-            color: var(--text-light);
+            color: var(--text-primary);
             font-size: 20px;
             transition: all 0.3s ease;
         }
@@ -296,23 +354,109 @@
             z-index: 100;
         }
 
-        @media (max-width: 768px) {
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .more-btn {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
             
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--nav-bg);
                 flex-direction: column;
-                gap: 10px;
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 10px 20px var(--shadow-color);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
             }
             
             .grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tabs {
+                gap: 8px;
+            }
+            
+            .tab {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+            
+            .card-content {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <header>
         <div class="container">
             <div class="flex items-center justify-between">
@@ -321,11 +465,15 @@
                     <span>ElectroLearn Hub</span>
                 </div>
                 <nav>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                     <ul>
                         <li><a href="#components" class="active">Components</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#microcontrollers">Microcontrollers</a></li>
                         <li><a href="#interview">Interview Q&A</a></li>
+                        <li><a href="#resources">Resources</a></li>
                     </ul>
                 </nav>
             </div>
@@ -334,11 +482,11 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Explore the World of Electronics</h1>
-            <p>Learn about electronic components, build exciting projects, explore microcontrollers, and prepare for your next electronics engineering interview.</p>
+            <h1>Master Electronics from Basics to Advanced</h1>
+            <p>Comprehensive guides, hands-on projects, microcontroller tutorials, and interview preparation for electronics enthusiasts of all levels.</p>
             <div class="flex justify-center gap-4">
-                <a href="#components" class="btn btn-primary">Get Started</a>
-                <a href="#projects" class="btn btn-secondary">View Projects</a>
+                <a href="#components" class="btn btn-primary">Start Learning</a>
+                <a href="#projects" class="btn btn-secondary">Browse Projects</a>
             </div>
         </div>
     </section>
@@ -347,51 +495,170 @@
         <div class="container">
             <h2 class="section-title">Electronic Components</h2>
             <div class="grid">
+                <!-- Component 1 -->
                 <div class="glass-panel component-card">
                     <i class="fas fa-bolt card-icon"></i>
                     <h3 class="card-title">Resistors</h3>
-                    <p class="card-content">Resistors limit the flow of electric current in a circuit. Their resistance is measured in ohms (Ω) and is indicated by color bands. They are used to control voltage and current levels.</p>
+                    <p class="card-content">Limit current flow, divide voltages, and adjust signal levels. Measured in ohms (Ω) with color-coded bands.</p>
                 </div>
                 
+                <!-- Component 2 -->
                 <div class="glass-panel component-card">
                     <i class="fas fa-car-battery card-icon"></i>
                     <h3 class="card-title">Capacitors</h3>
-                    <p class="card-content">Capacitors store and release electrical energy. They are used for filtering, timing, and power stabilization. Their capacity is measured in farads (F).</p>
+                    <p class="card-content">Store and release electrical energy for filtering, timing, and power stabilization. Measured in farads (F).</p>
                 </div>
                 
+                <!-- Component 3 -->
                 <div class="glass-panel component-card">
                     <i class="fas fa-exchange-alt card-icon"></i>
                     <h3 class="card-title">Transistors</h3>
-                    <p class="card-content">Transistors amplify or switch electronic signals. They are fundamental building blocks of modern electronic devices and come in various types like BJT, FET, and MOSFET.</p>
+                    <p class="card-content">Amplify or switch electronic signals. Types include BJT, FET, and MOSFET. Fundamental to modern electronics.</p>
                 </div>
+                
+                <!-- Component 4 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-magnet card-icon"></i>
+                    <h3 class="card-title">Inductors</h3>
+                    <p class="card-content">Store energy in magnetic fields, resist changes in current. Used in filters, transformers, and power supplies.</p>
+                </div>
+                
+                <!-- Component 5 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-tachometer-alt card-icon"></i>
+                    <h3 class="card-title">Diodes</h3>
+                    <p class="card-content">Allow current flow in one direction only. Types include LED, Zener, and Schottky diodes.</p>
+                </div>
+                
+                <!-- Component 6 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-microchip card-icon"></i>
+                    <h3 class="card-title">Integrated Circuits</h3>
+                    <p class="card-content">Complex circuits miniaturized on a semiconductor chip. Range from simple timers to microprocessors.</p>
+                </div>
+                
+                <!-- Component 7 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-sliders-h card-icon"></i>
+                    <h3 class="card-title">Potentiometers</h3>
+                    <p class="card-content">Variable resistors with adjustable resistance. Used for volume controls, light dimmers, and calibration.</p>
+                </div>
+                
+                <!-- Component 8 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-plug card-icon"></i>
+                    <h3 class="card-title">Connectors</h3>
+                    <p class="card-content">Physical interfaces for electrical connections. Include USB, HDMI, RJ45, and various terminal blocks.</p>
+                </div>
+                
+                <!-- Component 9 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-lightbulb card-icon"></i>
+                    <h3 class="card-title">LEDs</h3>
+                    <p class="card-content">Light Emitting Diodes that emit light when current passes through. Energy-efficient lighting solution.</p>
+                </div>
+                
+                <!-- Component 10 -->
+                <div class="glass-panel component-card">
+                    <i class="fas fa-wave-square card-icon"></i>
+                    <h3 class="card-title">Oscillators</h3>
+                    <p class="card-content">Generate repetitive electronic signals. Used in clocks, radios, and digital systems for timing.</p>
+                </div>
+            </div>
+            
+            <div class="more-btn">
+                <a href="#" class="btn btn-secondary">View All Components</a>
             </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Beginner Projects</h2>
+            <h2 class="section-title">Electronics Projects</h2>
             <div class="grid">
+                <!-- Project 1 -->
                 <div class="glass-panel project-card">
                     <i class="fas fa-lightbulb card-icon"></i>
                     <h3 class="card-title">LED Blinker Circuit</h3>
-                    <p class="card-content">Build a simple circuit that makes an LED blink at regular intervals. Learn about basic components, circuit design, and timing principles.</p>
-                    <a href="#" class="btn btn-secondary mt-4">View Project</a>
+                    <p class="card-content">Create a basic circuit that makes LEDs blink using a 555 timer IC. Learn about timing circuits and component interaction.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
                 </div>
                 
+                <!-- Project 2 -->
                 <div class="glass-panel project-card">
                     <i class="fas fa-thermometer-half card-icon"></i>
                     <h3 class="card-title">Temperature Sensor</h3>
-                    <p class="card-content">Create a digital temperature sensor that displays readings on an LCD screen. Learn about analog sensors and display interfaces.</p>
-                    <a href="#" class="btn btn-secondary mt-4">View Project</a>
+                    <p class="card-content">Build a digital thermometer with an LM35 sensor and Arduino. Display temperature on an LCD screen.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
                 </div>
                 
+                <!-- Project 3 -->
                 <div class="glass-panel project-card">
                     <i class="fas fa-gamepad card-icon"></i>
-                    <h3 class="card-title">Reaction Game</h3>
-                    <p class="card-content">Build a simple game that tests reaction time using LEDs and buttons. Learn about digital inputs, outputs, and programming logic.</p>
-                    <a href="#" class="btn btn-secondary mt-4">View Project</a>
+                    <h3 class="card-title">Reaction Timer Game</h3>
+                    <p class="card-content">Create a game that tests reflexes with LEDs and buttons. Learn about digital inputs, outputs, and programming logic.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
                 </div>
+                
+                <!-- Project 4 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-volume-up card-icon"></i>
+                    <h3 class="card-title">Audio Amplifier</h3>
+                    <p class="card-content">Build a simple audio amplifier using the LM386 IC. Learn about amplification and audio signal processing.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-sun card-icon"></i>
+                    <h3 class="card-title">Solar Charger</h3>
+                    <p class="card-content">Create a portable solar USB charger. Learn about solar cells, voltage regulation, and battery charging circuits.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-wifi card-icon"></i>
+                    <h3 class="card-title">WiFi Weather Station</h3>
+                    <p class="card-content">Build an ESP32-based weather station that sends data to your phone. Learn about IoT and wireless communication.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 7 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-robot card-icon"></i>
+                    <h3 class="card-title">Line Follower Robot</h3>
+                    <p class="card-content">Create an autonomous robot that follows a line. Learn about sensors, motor control, and basic robotics.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 8 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-mobile-alt card-icon"></i>
+                    <h3 class="card-title">Bluetooth Speaker</h3>
+                    <p class="card-content">Build your own Bluetooth speaker with amplifier and battery. Learn about wireless audio and power management.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 9 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-lock card-icon"></i>
+                    <h3 class="card-title">Digital Combination Lock</h3>
+                    <p class="card-content">Create a secure digital lock with keypad and servo motor. Learn about security systems and input processing.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+                
+                <!-- Project 10 -->
+                <div class="glass-panel project-card">
+                    <i class="fas fa-charging-station card-icon"></i>
+                    <h3 class="card-title">USB Power Bank</h3>
+                    <p class="card-content">Build a custom USB power bank with battery level indicator. Learn about power electronics and battery management.</p>
+                    <a href="#" class="btn btn-secondary mt-4">Build This Project</a>
+                </div>
+            </div>
+            
+            <div class="more-btn">
+                <a href="#" class="btn btn-secondary">View All Projects</a>
             </div>
         </div>
     </section>
@@ -403,18 +670,20 @@
                 <div class="tab active" data-tab="arduino">Arduino</div>
                 <div class="tab" data-tab="raspberry">Raspberry Pi</div>
                 <div class="tab" data-tab="esp32">ESP32</div>
+                <div class="tab" data-tab="pic">PIC</div>
+                <div class="tab" data-tab="stm32">STM32</div>
             </div>
             
             <div class="tab-content active" id="arduino">
                 <div class="glass-panel mc-card">
                     <i class="fas fa-microchip card-icon"></i>
-                    <h3 class="card-title">Arduino Uno</h3>
-                    <p class="card-content">The Arduino Uno is a popular microcontroller board based on the ATmega328P. It has 14 digital I/O pins, 6 analog inputs, a USB connection, and is perfect for beginners with its simple programming environment.</p>
+                    <h3 class="card-title">Arduino Family</h3>
+                    <p class="card-content">Open-source platform with easy-to-use hardware and software. Perfect for beginners and rapid prototyping.</p>
                     <ul class="card-content">
-                        <li>Microcontroller: ATmega328P</li>
-                        <li>Operating Voltage: 5V</li>
-                        <li>Digital I/O Pins: 14</li>
-                        <li>Flash Memory: 32 KB</li>
+                        <li>Arduino Uno: Most popular for beginners</li>
+                        <li>Arduino Nano: Compact size for small projects</li>
+                        <li>Arduino Mega: More I/O pins for complex projects</li>
+                        <li>Arduino Due: 32-bit ARM core for advanced applications</li>
                     </ul>
                 </div>
             </div>
@@ -422,13 +691,13 @@
             <div class="tab-content" id="raspberry">
                 <div class="glass-panel mc-card">
                     <i class="fas fa-desktop card-icon"></i>
-                    <h3 class="card-title">Raspberry Pi 4</h3>
-                    <p class="card-content">The Raspberry Pi is a series of small single-board computers that can run a full operating system. It's great for more complex projects that require networking or multimedia capabilities.</p>
+                    <h3 class="card-title">Raspberry Pi</h3>
+                    <p class="card-content">Single-board computers that run full operating systems. Ideal for projects needing more computing power.</p>
                     <ul class="card-content">
-                        <li>Processor: Broadcom BCM2711</li>
-                        <li>RAM: 2GB, 4GB or 8GB LPDDR4</li>
-                        <li>Connectivity: Dual-band WiFi, Bluetooth 5.0</li>
-                        <li>Ports: 2 × USB 3.0, 2 × USB 2.0</li>
+                        <li>RPi 4: Most powerful with up to 8GB RAM</li>
+                        <li>RPi Zero: Ultra-compact and low cost</li>
+                        <li>RPi Pico: Microcontroller with RP2040 chip</li>
+                        <li>GPIO Pins: 40-pin header for electronics projects</li>
                     </ul>
                 </div>
             </div>
@@ -436,13 +705,41 @@
             <div class="tab-content" id="esp32">
                 <div class="glass-panel mc-card">
                     <i class="fas fa-wifi card-icon"></i>
-                    <h3 class="card-title">ESP32</h3>
-                    <p class="card-content">The ESP32 is a series of low-cost, low-power system-on-a-chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth. Ideal for IoT projects.</p>
+                    <h3 class="card-title">ESP32 Series</h3>
+                    <p class="card-content">Low-cost, low-power system-on-chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth.</p>
                     <ul class="card-content">
-                        <li>Processor: Xtensa dual-core 32-bit LX6</li>
-                        <li>Wireless Connectivity: Wi-Fi + Bluetooth</li>
-                        <li>Ultra-low power consumption</li>
-                        <li>Rich peripheral interface</li>
+                        <li>ESP32-WROOM: Standard module with Wi-Fi/BT</li>
+                        <li>ESP32-CAM: With camera interface</li>
+                        <li>ESP32-S2: USB OTG support</li>
+                        <li>ESP32-C3: RISC-V architecture</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="pic">
+                <div class="glass-panel mc-card">
+                    <i class="fas fa-cog card-icon"></i>
+                    <h3 class="card-title">PIC Microcontrollers</h3>
+                    <p class="card-content">Family of microcontrollers made by Microchip Technology. Known for low power consumption.</p>
+                    <ul class="card-content">
+                        <li>PIC16: 8-bit for simple applications</li>
+                        <li>PIC18: Enhanced 8-bit architecture</li>
+                        <li>PIC24: 16-bit for more complex tasks</li>
+                        <li>dsPIC: Digital Signal Controllers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="stm32">
+                <div class="glass-panel mc-card">
+                    <i class="fas fa-tachometer-alt card-icon"></i>
+                    <h3 class="card-title">STM32 Series</h3>
+                    <p class="card-content">32-bit ARM Cortex-M microcontrollers from STMicroelectronics. High performance for demanding applications.</p>
+                    <ul class="card-content">
+                        <li>STM32F0: Entry-level Cortex-M0</li>
+                        <li>STM32F4: High-performance Cortex-M4</li>
+                        <li>STM32L0: Ultra-low-power series</li>
+                        <li>STM32H7: Maximum performance Cortex-M7</li>
                     </ul>
                 </div>
             </div>
@@ -451,24 +748,105 @@
 
     <section id="interview">
         <div class="container">
-            <h2 class="section-title">Interview Questions</h2>
+            <h2 class="section-title">Interview Questions & Answers</h2>
             <div class="grid">
+                <!-- Question 1 -->
                 <div class="glass-panel question-card">
                     <i class="fas fa-question-circle card-icon"></i>
-                    <h3 class="card-title">Difference between analog and digital signals</h3>
+                    <h3 class="card-title">Analog vs Digital Signals</h3>
                     <p class="card-content">Analog signals are continuous and represent physical measurements, while digital signals are discrete and represent data as binary values (0s and 1s).</p>
                 </div>
                 
+                <!-- Question 2 -->
                 <div class="glass-panel question-card">
                     <i class="fas fa-question-circle card-icon"></i>
                     <h3 class="card-title">Ohm's Law</h3>
-                    <p class="card-content">Ohm's Law states that the current through a conductor is directly proportional to the voltage and inversely proportional to the resistance: V = I × R.</p>
+                    <p class="card-content">V = I × R, where V is voltage, I is current, and R is resistance. Current through a conductor is proportional to voltage and inversely proportional to resistance.</p>
                 </div>
                 
+                <!-- Question 3 -->
                 <div class="glass-panel question-card">
                     <i class="fas fa-question-circle card-icon"></i>
-                    <h3 class="card-title">Purpose of a capacitor</h3>
-                    <p class="card-content">Capacitors store electrical energy, filter noise from signals, block DC while allowing AC to pass, and are used in timing circuits.</p>
+                    <h3 class="card-title">Capacitor Function</h3>
+                    <p class="card-content">Stores electrical energy, filters noise from signals, blocks DC while allowing AC to pass, and used in timing circuits.</p>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Transistor Types</h3>
+                    <p class="card-content">BJT (Bipolar Junction Transistor) and FET (Field Effect Transistor). BJTs are current-controlled, FETs are voltage-controlled.</p>
+                </div>
+                
+                <!-- Question 5 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Diode Applications</h3>
+                    <p class="card-content">Rectification (AC to DC conversion), voltage regulation (Zener diodes), light emission (LEDs), and photodetection (photodiodes).</p>
+                </div>
+                
+                <!-- Question 6 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Microcontroller vs Microprocessor</h3>
+                    <p class="card-content">Microcontrollers have built-in memory and peripherals for embedded systems, while microprocessors require external components.</p>
+                </div>
+                
+                <!-- Question 7 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">PCB Design Process</h3>
+                    <p class="card-content">Schematic design, component placement, routing, design rule check, Gerber file generation, and manufacturing.</p>
+                </div>
+                
+                <!-- Question 8 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Op-Amp Applications</h3>
+                    <p class="card-content">Amplification, filtering, signal conditioning, mathematical operations, and oscillation circuits.</p>
+                </div>
+                
+                <!-- Question 9 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Communication Protocols</h3>
+                    <p class="card-content">I2C, SPI, UART for short-distance; Ethernet, WiFi, Bluetooth for longer distances and wireless communication.</p>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="glass-panel question-card">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3 class="card-title">Power Supply Types</h3>
+                    <p class="card-content">Linear (low noise, less efficient) and switching (high efficiency, more noise). Selection depends on application requirements.</p>
+                </div>
+            </div>
+            
+            <div class="more-btn">
+                <a href="#" class="btn btn-secondary">More Interview Questions</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="grid">
+                <div class="glass-panel component-card">
+                    <i class="fas fa-book card-icon"></i>
+                    <h3 class="card-title">E-Books & Guides</h3>
+                    <p class="card-content">Comprehensive textbooks, datasheets, and application notes for all levels of electronics education.</p>
+                </div>
+                
+                <div class="glass-panel project-card">
+                    <i class="fas fa-video card-icon"></i>
+                    <h3 class="card-title">Video Tutorials</h3>
+                    <p class="card-content">Step-by-step video guides covering circuit building, coding, and troubleshooting techniques.</p>
+                </div>
+                
+                <div class="glass-panel mc-card">
+                    <i class="fas fa-tools card-icon"></i>
+                    <h3 class="card-title">Tools & Calculators</h3>
+                    <p class="card-content">Ohm's law calculator, resistor color code decoder, and other essential electronics tools.</p>
                 </div>
             </div>
         </div>
@@ -480,7 +858,7 @@
                 <i class="fas fa-microchip logo-icon"></i>
                 <span>ElectroLearn Hub</span>
             </div>
-            <p>Your gateway to electronics knowledge</p>
+            <p>Your comprehensive guide to electronics mastery</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -497,8 +875,36 @@
     </div>
 
     <script>
-        // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const modeToggle = document.querySelector('.mode-toggle');
+            const body = document.body;
+            const icon = modeToggle.querySelector('i');
+            
+            // Set initial theme based on time or preference
+            const hour = new Date().getHours();
+            if (hour >= 18 || hour < 6) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            
+            modeToggle.addEventListener('click', () => {
+                if (body.classList.contains('light-mode')) {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+
+            // Tab functionality
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
             
@@ -520,6 +926,14 @@
                 });
             });
 
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('nav ul');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
             // Smooth scrolling for navigation links
             document.querySelectorAll('nav a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -536,26 +950,10 @@
                     // Update active nav link
                     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
                     this.classList.add('active');
+                    
+                    // Close mobile menu after click
+                    mobileMenu.classList.remove('active');
                 });
-            });
-
-            // Simple dark mode toggle
-            const modeToggle = document.querySelector('.mode-toggle');
-            modeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-                const icon = modeToggle.querySelector('i');
-                
-                if (document.body.classList.contains('light-mode')) {
-                    document.body.style.background = 'linear-gradient(135deg, #e0e7ff, #c7d2fe)';
-                    document.body.style.color = '#1e293b';
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                } else {
-                    document.body.style.background = 'linear-gradient(135deg, #0f172a, #1e293b)';
-                    document.body.style.color = '#f8fafc';
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
             });
         });
     </script>
