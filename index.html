@@ -1,171 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ElectroGlass - Full Site</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>
-/* --- Shared styles --- */
-:root{--bg-gradient:linear-gradient(135deg,#f6d365,#fda085,#ff758c,#ff7eb3);--text-color:#111;--card-bg:rgba(255,255,255,0.2);--card-border:rgba(255,255,255,0.3);--modal-bg:rgba(255,255,255,0.85);--highlight:#ff4d4d;--sidebar-bg:rgba(255,255,255,0.2);--sidebar-hover:rgba(255,255,255,0.4);}
-body.dark{--bg-gradient:linear-gradient(135deg,#0f2027,#203a43,#2c5364);--text-color:#fff;--card-bg:rgba(255,255,255,0.1);--card-border:rgba(255,255,255,0.2);--modal-bg:rgba(255,255,255,0.15);--highlight:#ff758c;--sidebar-bg:rgba(255,255,255,0.1);--sidebar-hover:rgba(255,255,255,0.2);}
-body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg-gradient);background-size:400% 400%;animation:gradientBG 15s ease infinite;color:var(--text-color);display:flex;min-height:100vh;transition: color 0.4s ease;}
-@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-.sidebar{width:220px;transition:width 0.3s ease;overflow:hidden;background:var(--sidebar-bg);backdrop-filter: blur(15px);border-right:1px solid var(--card-border);display:flex;flex-direction:column;padding:20px;box-shadow:3px 0 10px rgba(0,0,0,0.2);min-height:100vh;}
-.sidebar.minimized{width:70px;}
-.sidebar h2{white-space: nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; color:var(--highlight);}
-.sidebar button{width:100%;font-size:1.2rem;padding:15px 10px;text-align:left;display:flex;align-items:center;gap:10px;margin-bottom:10px;border:none;border-radius:12px;cursor:pointer;background:none;color:var(--text-color);transition:background 0.3s;}
-.sidebar button:hover{background:var(--sidebar-hover);}
-.sidebar.minimized button span{display:none;}
-.toggle-sidebar-btn{background:none;border:none;color:var(--text-color);font-size:1.5rem;cursor:pointer;margin-bottom:15px;}
-.main{flex:1;padding:20px;display:flex;flex-direction:column;align-items:center;}
-h1{text-align:center;font-size:2rem;margin:20px 0;color:#fff;text-shadow:0 0 10px rgba(255,255,255,0.7);}
-.bio{max-width:900px;padding:20px;margin-bottom:30px;border-radius:25px;background:var(--card-bg);backdrop-filter: blur(20px);border:1px solid var(--card-border);font-size:1rem;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,0.25);}
-.bio span{font-weight:700;background:linear-gradient(to right,#ff758c,#ff7eb3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;max-width:1200px;}
-.card{width:200px;min-height:250px;border-radius:20px;background:var(--card-bg);backdrop-filter: blur(20px);border:1px solid var(--card-border);display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;transition:transform 0.4s ease,box-shadow 0.4s ease, background 0.4s ease;text-align:center;font-weight:600;font-family:'Inter',sans-serif;color:#fff;padding:15px;box-shadow:0 8px 25px rgba(0,0,0,0.3);}
-.card img{width:60px;margin-bottom:10px;}
-.card:hover{transform:translateY(-10px) scale(1.08);box-shadow:0 15px 30px rgba(0,0,0,0.45);background:linear-gradient(135deg,#ff758c,#ff7eb3);}
-.modal{position: fixed; top:0; left:0; width:100%; height:100%; display:none; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; padding:10px;}
-.modal-content{background:var(--modal-bg); backdrop-filter: blur(25px); padding:30px; border-radius:25px; max-width:600px; width:100%; text-align:left; color:var(--text-color); box-shadow:0 15px 40px rgba(0,0,0,0.5); animation:fadeIn 0.5s ease;}
-.modal-content h2{ font-family:'Poppins',sans-serif; color:var(--highlight);}
-.modal-content p{ font-family:'Inter',sans-serif; margin-bottom:15px; text-align:justify;}
-.modal-content img{width:150px; display:block; margin:10px auto;}
-.close-btn{ margin-top:20px; padding:10px 20px; border-radius:15px; border:none; cursor:pointer; font-weight:bold; background:linear-gradient(to right,#00c6ff,#0072ff); color:#fff; transition:0.3s;}
-.close-btn:hover{background:linear-gradient(to right,#0072ff,#00c6ff);}
-@keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
-.toggle-btn{position:fixed; top:20px; right:20px; padding:12px 20px; border-radius:15px; border:none; cursor:pointer; font-weight:bold; background: linear-gradient(to right, #ff758c, #ff7eb3); color:#fff; z-index:1100; transition:0.3s;}
-.toggle-btn:hover{background:linear-gradient(to right,#ff7eb3,#ff758c);}
-@media(max-width:768px){.sidebar{width:150px;padding:15px;} .card{width:160px; min-height:220px; font-size:0.95rem;} .bio{font-size:0.95rem;} h1{font-size:1.8rem;}}
-@media(max-width:480px){.sidebar{width:120px;padding:10px;} .card{width:140px; min-height:200px; font-size:0.85rem;} .bio{font-size:0.9rem;} h1{font-size:1.5rem;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .component-card, .project-card, .mc-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .component-card:hover, .project-card:hover, .mc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .question {
+            border-left: 4px solid #3B82F6;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-primary p-2 rounded-lg mr-3">
+                    <i class="fas fa-microchip text-white text-2xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-dark">Electronics Learning Hub</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#components" class="text-dark hover:text-primary font-medium">Components</a></li>
+                    <li><a href="#projects" class="text-dark hover:text-primary font-medium">Projects</a></li>
+                    <li><a href="#microcontrollers" class="text-dark hover:text-primary font-medium">Microcontrollers</a></li>
+                    <li><a href="#interview" class="text-dark hover:text-primary font-medium">Interview Q&A</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-dark">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
 
-<div class="sidebar" id="sidebar">
-<h2>ElectroGlass</h2>
-<button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
-<button onclick="showPage('components')">🔧 <span>Components</span></button>
-<button onclick="showPage('microcontrollers')">🖥️ <span>Microcontrollers</span></button>
-<button onclick="showPage('projects')">⚡ <span>Easy Projects</span></button>
-</div>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-blue-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Learn Electronics The Right Way</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-8">Comprehensive guides, projects and resources for electronics enthusiasts of all skill levels.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#components" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition">Explore Components</a>
+                <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition">Start a Project</a>
+            </div>
+        </div>
+    </section>
 
-<div class="main">
-<button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <!-- Components Section -->
+    <section id="components" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Electronic Components</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Resistor -->
+                <div class="component-card bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://placeholder-image-service.onrender.com/image/200x150?prompt=Colorful electronic resistor with colored bands&id=resistor-123" alt="Electronic resistor with colored bands indicating resistance values" class="h-32 object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Resistors</h3>
+                    <p class="text-gray-600 mb-4">Resistors limit the flow of electric current in a circuit. Their resistance is measured in ohms (Ω) and is indicated by color bands.</p>
+                    <div class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full inline-block">Passive Component</div>
+                </div>
+                
+                <!-- Capacitor -->
+                <div class="component-card bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://placeholder-image-service.onrender.com/image/200x150?prompt=Various capacitor types including electrolytic and ceramic&id=capacitor-456" alt="Assortment of different capacitor types used in electronic circuits" class="h-32 object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Capacitors</h3>
+                    <p class="text-gray-600 mb-4">Capacitors store and release electrical energy. They are used for filtering, timing, and power stabilization.</p>
+                    <div class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full inline-block">Passive Component</div>
+                </div>
+                
+                <!-- Transistor -->
+                <div class="component-card bg-light rounded-xl p-6 shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://placeholder-image-service.onrender.com/image/200x150?prompt=Transistor component with metal casing and three leads&id=transistor-789" alt="Transistor component showing metal casing and three connection leads" class="h-32 object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Transistors</h3>
+                    <p class="text-gray-600 mb-4">Transistors amplify or switch electronic signals. They are fundamental building blocks of modern electronic devices.</p>
+                    <div class="bg-accent text-white text-sm font-medium px-3 py-1 rounded-full inline-block">Active Component</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="text-primary font-bold hover:underline">View All Components <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
 
-<!-- COMPONENTS PAGE -->
-<div class="page" id="components">
-<h1>Components</h1>
-<div class="bio">Explore 10 essential electronic components. Each card shows 3–4 paragraphs explaining features, applications, and practical tips.</div>
-<div class="grid">
-<!-- 10 component cards with emoji + PNG + 3-4 paragraph text -->
-<!-- Card 1: Resistor -->
-<div class="card" onclick="showModal('Resistor','Resistor limits current in circuits.\n\nThey come in various types: carbon film, metal film, wirewound.\n\nUsed for voltage division and biasing.\n\nPractical tip: Always calculate voltage and current before choosing resistor.','images/resistor.png')">🔹<img src="images/resistor.png" alt="Resistor">Resistor</div>
-<!-- Card 2: Capacitor -->
-<div class="card" onclick="showModal('Capacitor','Capacitors store electrical energy.\n\nTypes include ceramic, electrolytic, film, and tantalum.\n\nUsed in filtering, coupling, timing, and energy storage.\n\nPractical tip: Mind polarity for electrolytics.','images/capacitor.png')">⚡<img src="images/capacitor.png" alt="Capacitor">Capacitor</div>
-<!-- Card 3: Diode -->
-<div class="card" onclick="showModal('Diode','Diodes allow current in one direction.\n\nUsed in rectification, voltage regulation, protection.\n\nTypes: Standard, Zener, Schottky, LED.\n\nPractical tip: Respect max reverse voltage rating.','images/diode.png')">💡<img src="images/diode.png" alt="Diode">Diode</div>
-<!-- Card 4: Transistor -->
-<div class="card" onclick="showModal('Transistor','Transistors amplify or switch current.\n\nTypes: BJT, MOSFET, JFET.\n\nUsed in amplification, switching, digital logic.\n\nPractical tip: Always refer datasheet for pinout and biasing.','images/transistor.png')">🔺<img src="images/transistor.png" alt="Transistor">Transistor</div>
-<!-- Card 5: Inductor -->
-<div class="card" onclick="showModal('Inductor','Inductors store energy in magnetic field.\n\nTypes: Air core, iron core.\n\nUsed in filters, transformers, oscillators.\n\nPractical tip: Avoid exceeding current rating to prevent saturation.','images/inductor.png')">🌀<img src="images/inductor.png" alt="Inductor">Inductor</div>
-<!-- Card 6: LED -->
-<div class="card" onclick="showModal('LED','LED emits light when current flows.\n\nTypes: Standard, RGB, High-power.\n\nUsed for indicators, displays, illumination.\n\nPractical tip: Always use series resistor to limit current.','images/led.png')">💡<img src="images/led.png" alt="LED">LED</div>
-<!-- Card 7: Switch -->
-<div class="card" onclick="showModal('Switch','Switches control current manually.\n\nTypes: Toggle, Push-button, Slide, DIP.\n\nUsed for on/off control or selection.\n\nPractical tip: Ensure current rating exceeds load.','images/switch.png')">🛑<img src="images/switch.png" alt="Switch">Switch</div>
-<!-- Card 8: Potentiometer -->
-<div class="card" onclick="showModal('Potentiometer','Variable resistor for adjusting voltage.\n\nUsed in volume control, brightness, sensor calibration.\n\nTypes: Rotary, Slide.\n\nPractical tip: Check power rating to avoid overheating.','images/potentiometer.png')">🎚️<img src="images/potentiometer.png" alt="Potentiometer">Potentiometer</div>
-<!-- Card 9: Relay -->
-<div class="card" onclick="showModal('Relay','Electromechanical switch activated by current.\n\nTypes: SPDT, DPDT, Solid-state.\n\nUsed for switching high power with low power control.\n\nPractical tip: Use diode across coil to prevent back EMF.','images/relay.png')">🔁<img src="images/relay.png" alt="Relay">Relay</div>
-<!-- Card 10: IC -->
-<div class="card" onclick="showModal('IC','Integrated Circuit packs multiple components in one chip.\n\nTypes: Linear, Digital, Mixed-signal.\n\nUsed in amplifiers, timers, microcontrollers.\n\nPractical tip: Check pinout & voltage rating.','images/ic.png')">💻<img src="images/ic.png" alt="IC">IC</div>
-</div>
-</div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Beginner Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- LED Blinker -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=LED circuit on breadboard blinking with Arduino&id=led-project-111" alt="LED circuit on a breadboard connected to an Arduino microcontroller" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-dark">Simple LED Blinker</h3>
+                        <p class="text-gray-600 mb-4">Learn the basics of circuit building with this introductory project that makes an LED blink at regular intervals.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 ml-2">Beginner</span>
+                            </div>
+                            <a href="#" class="text-primary font-bold hover:underline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Temperature Sensor -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Temperature sensor circuit with LCD display&id=temp-project-222" alt="Temperature sensing circuit with LCD display showing current temperature readings" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-dark">Temperature Monitor</h3>
+                        <p class="text-gray-600 mb-4">Build a digital temperature sensor that displays readings on an LCD screen. Learn about analog sensors and displays.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-gray-600 ml-2">Intermediate</span>
+                            </div>
+                            <a href="#" class="text-primary font-bold hover:underline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="text-primary font-bold hover:underline">View All Projects <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
 
-<!-- MICROCONTROLLERS PAGE -->
-<div class="page" id="microcontrollers" style="display:none;">
-<h1>Microcontrollers</h1>
-<div class="bio">10 microcontrollers explained with features, applications, and why they are best suited for certain projects.</div>
-<div class="grid">
-<!-- Card 1: Arduino Uno -->
-<div class="card" onclick="showModal('Arduino Uno','Arduino Uno is popular MCU for beginners.\n\nATmega328P, easy to program.\n\nIdeal for sensors, LEDs, small projects.\n\nAffordable and widely supported.','images/arduino.png')">🤖<img src="images/arduino.png" alt="Arduino Uno">Arduino Uno</div>
-<!-- Card 2: ESP32 -->
-<div class="card" onclick="showModal('ESP32','ESP32 is dual-core MCU with WiFi & Bluetooth.\n\nSupports high-speed operations.\n\nGreat for IoT & wireless projects.\n\nPowerful yet cost-effective.','images/esp32.png')">🌐<img src="images/esp32.png" alt="ESP32">ESP32</div>
-<!-- Card 3: Raspberry Pi Pico -->
-<div class="card" onclick="showModal('Raspberry Pi Pico','RP2040 microcontroller board.\n\nDual-core ARM Cortex M0+.\n\nGreat for embedded projects, sensors, robotics.\n\nAffordable and versatile.','images/pico.png')">🍓<img src="images/pico.png" alt="Pico">Raspberry Pi Pico</div>
-<!-- Card 4: ATtiny85 -->
-<div class="card" onclick="showModal('ATtiny85','Small MCU for compact projects.\n\n8-pin microcontroller.\n\nUsed in wearables, small gadgets.\n\nLow power, easy for simple tasks.','images/attiny85.png')">🪙<img src="images/attiny85.png" alt="ATtiny85">ATtiny85</div>
-<!-- Card 5: STM32F103C8T6 -->
-<div class="card" onclick="showModal('STM32F103C8T6','STM32 ARM Cortex M3.\n\nHigh performance, affordable.\n\nUsed in robotics, automation.\n\nSupports complex tasks with ease.','images/stm32.png')">⚙️<img src="images/stm32.png" alt="STM32">STM32F103C8T6</div>
-<!-- Card 6: Teensy 4.0 -->
-<div class="card" onclick="showModal('Teensy 4.0','High-speed MCU, ARM Cortex M7.\n\nFastest Arduino-compatible board.\n\nGreat for audio, robotics, high-speed sensors.\n\nCompact size, very powerful.','images/teensy.png')">🚀<img src="images/teensy.png" alt="Teensy 4.0">Teensy 4.0</div>
-<!-- Card 7: Arduino Mega -->
-<div class="card" onclick="showModal('Arduino Mega','Mega has more pins than Uno.\n\nATmega2560, 54 digital I/O.\n\nIdeal for complex projects needing many I/O.\n\nCompatible with Arduino ecosystem.','images/mega.png')">🖥️<img src="images/mega.png" alt="Arduino Mega">Arduino Mega</div>
-<!-- Card 8: NodeMCU -->
-<div class="card" onclick="showModal('NodeMCU','ESP8266-based MCU with WiFi.\n\nGreat for IoT & web projects.\n\nSmall size, low cost.\n\nEasily programmable with Arduino IDE.','images/nodemcu.png')">📶<img src="images/nodemcu.png" alt="NodeMCU">NodeMCU</div>
-<!-- Card 9: BeagleBone Black -->
-<div class="card" onclick="showModal('BeagleBone Black','Powerful MCU with Linux support.\n\nUsed in advanced robotics, automation.\n\nExtensive I/O and networking.\n\nIdeal for embedded Linux projects.','images/beaglebone.png')">🖧<img src="images/beaglebone.png" alt="BeagleBone Black">BeagleBone Black</div>
-<!-- Card 10: MSP430 -->
-<div class="card" onclick="showModal('MSP430','Low-power MCU for battery projects.\n\n16-bit RISC, efficient.\n\nUsed in sensors, wearables.\n\nExcellent for ultra-low-power applications.','images/msp430.png')">⚡<img src="images/msp430.png" alt="MSP430">MSP430</div>
-</div>
-</div>
+    <!-- Microcontrollers Section -->
+    <section id="microcontrollers" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Popular Microcontrollers</h2>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <button class="tab-btn active px-4 py-2 bg-primary text-white rounded-lg" data-tab="arduino">Arduino</button>
+                <button class="tab-btn px-4 py-2 bg-gray-200 text-dark rounded-lg" data-tab="raspberry">Raspberry Pi</button>
+                <button class="tab-btn px-4 py-2 bg-gray-200 text-dark rounded-lg" data-tab="esp32">ESP32</button>
+            </div>
+            
+            <div class="tab-content active" id="arduino">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Arduino Uno microcontroller board with components&id=arduino-333" alt="Arduino Uno microcontroller board with labeled components and connections" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">Arduino Uno</h3>
+                        <p class="text-gray-600 mb-4">The Arduino Uno is a popular microcontroller board based on the ATmega328P. It's perfect for beginners with its simple programming environment and extensive community support.</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>14 Digital I/O Pins</li>
+                            <li>6 Analog Input Pins</li>
+                            <li>16 MHz Clock Speed</li>
+                            <li>32 KB Flash Memory</li>
+                        </ul>
+                        <a href="#" class="text-primary font-bold hover:underline">Learn More About Arduino</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="raspberry">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=Raspberry Pi 4 single-board computer&id=raspberry-444" alt="Raspberry Pi 4 single-board computer with connected peripherals" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">Raspberry Pi 4</h3>
+                        <p class="text-gray-600 mb-4">The Raspberry Pi is a series of small single-board computers that can run a full operating system. It's great for more complex projects that require networking or multimedia capabilities.</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>Quad-core Cortex-A72 CPU</li>
+                            <li>Up to 8GB RAM</li>
+                            <li>Dual HDMI Outputs</li>
+                            <li>Gigabit Ethernet</li>
+                        </ul>
+                        <a href="#" class="text-primary font-bold hover:underline">Learn More About Raspberry Pi</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="esp32">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <img src="https://placeholder-image-service.onrender.com/image/400x300?prompt=ESP32 development board with WiFi and Bluetooth&id=esp32-555" alt="ESP32 development board featuring WiFi and Bluetooth connectivity" class="rounded-lg shadow-md w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4 text-dark">ESP32</h3>
+                        <p class="text-gray-600 mb-4">The ESP32 is a series of low-cost, low-power system-on-a-chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth. Ideal for IoT projects.</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>Dual-core Tensilica LX6 CPU</li>
+                            <li>Integrated WiFi and Bluetooth</li>
+                            <li>Ultra-low power consumption</li>
+                            <li>Rich peripheral interface</li>
+                        </ul>
+                        <a href="#" class="text-primary font-bold hover:underline">Learn More About ESP32</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- EASY PROJECTS PAGE -->
-<div class="page" id="projects" style="display:none;">
-<h1>Easy Projects</h1>
-<div class="bio">10 beginner-friendly projects with detailed 3–4 paragraph steps, components, and execution guide.</div>
-<div class="grid">
-<!-- Card 1: LED Blinking -->
-<div class="card" onclick="showModal('LED Blinking','Learn to blink an LED.\n\nComponents: LED, resistor, Arduino.\n\nSteps: connect circuit, upload code, watch LED blink.\n\nTeaches basics of digital output.','images/led_project.png')">💡<img src="images/led_project.png" alt="LED Blinking">LED Blinking</div>
-<!-- Card 2: Traffic Light Simulation -->
-<div class="card" onclick="showModal('Traffic Light Simulation','Simulate traffic lights with LEDs.\n\nComponents: 3 LEDs, resistors, Arduino.\n\nSteps: code sequence, connect circuit, observe operation.\n\nTeaches timing and sequencing.','images/traffic_light.png')">🚦<img src="images/traffic_light.png" alt="Traffic Light">Traffic Light</div>
-<!-- Card 3: Temperature Sensor Monitor -->
-<div class="card" onclick="showModal('Temp Sensor Monitor','Read temperature from sensor.\n\nComponents: LM35, Arduino, wires, LCD.\n\nSteps: connect sensor, code, monitor values.\n\nTeaches analog input reading.','images/temp_sensor.png')">🌡️<img src="images/temp_sensor.png" alt="Temp Sensor">Temp Monitor</div>
-<!-- Card 4: Servo Motor Control -->
-<div class="card" onclick="showModal('Servo Motor Control','Control servo position via Arduino.\n\nComponents: Servo, Arduino, wires.\n\nSteps: connect servo, upload code, test movements.\n\nTeaches PWM and motion control.','images/servo.png')">🕹️<img src="images/servo.png" alt="Servo Motor">Servo Control</div>
-<!-- Card 5: LCD Display Hello World -->
-<div class="card" onclick="showModal('LCD Hello World','Display text on LCD.\n\nComponents: 16x2 LCD, Arduino, potentiometer.\n\nSteps: wire LCD, upload code, adjust contrast.\n\nTeaches basic output display.','images/lcd.png')">📟<img src="images/lcd.png" alt="LCD">LCD Display</div>
-<!-- Card 6: Buzzer Alarm -->
-<div class="card" onclick="showModal('Buzzer Alarm','Make buzzer beep.\n\nComponents: Buzzer, Arduino, resistor.\n\nSteps: connect, upload code, hear sound.\n\nTeaches digital output & sound generation.','images/buzzer.png')">🔔<img src="images/buzzer.png" alt="Buzzer">Buzzer Alarm</div>
-<!-- Card 7: Push Button Counter -->
-<div class="card" onclick="showModal('Button Counter','Count button presses.\n\nComponents: Push button, Arduino, resistor, LED.\n\nSteps: code counting logic, connect circuit, press button.\n\nTeaches input reading & logic.','images/button_counter.png')">🖲️<img src="images/button_counter.png" alt="Button Counter">Button Counter</div>
-<!-- Card 8: Light Sensitive LED -->
-<div class="card" onclick="showModal('Light Sensitive LED','LED reacts to light.\n\nComponents: LDR, resistor, LED, Arduino.\n\nSteps: wire LDR, code, test in light/dark.\n\nTeaches analog input & conditional output.','images/ldr.png')">💡<img src="images/ldr.png" alt="LDR LED">LDR LED</div>
-<!-- Card 9: Motor Speed Control -->
-<div class="card" onclick="showModal('Motor Speed Control','Control DC motor speed.\n\nComponents: DC motor, Arduino, PWM.\n\nSteps: connect motor driver, code PWM, adjust speed.\n\nTeaches PWM & motor control.','images/motor.png')">⚙️<img src="images/motor.png" alt="Motor Speed Control">Motor Speed</div>
-<!-- Card 10: Temperature-controlled Fan -->
-<div class="card" onclick="showModal('Temp-controlled Fan','Fan reacts to temperature.\n\nComponents: Fan, LM35, Arduino, transistor.\n\nSteps: wire circuit, code sensor logic, test.\n\nTeaches control & automation.','images/temp_fan.png')">🌬️<img src="images/temp_fan.png" alt="Temp Fan">Temp Fan</div>
+    <!-- Interview Questions Section -->
+    <section id="interview" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Electronics Engineering Interview Questions</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="question bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-bold mb-2 text-dark">What is the difference between analog and digital signals?</h3>
+                    <p class="text-gray-600">Analog signals are continuous signals that vary over time, representing physical measurements. Digital signals are discrete-time signals generated by digital modulation, representing data as a sequence of discrete values.</p>
+                </div>
+                
+                <div class="question bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-bold mb-2 text-dark">Explain Ohm's Law.</h3>
+                    <p class="text-gray-600">Ohm's Law states that the current through a conductor between two points is directly proportional to the voltage across the two points and inversely proportional to the resistance between them. It is represented by the formula: V = I × R, where V is voltage, I is current, and R is resistance.</p>
+                </div>
+                
+                <div class="question bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-bold mb-2 text-dark">What is the purpose of a capacitor in a circuit?</h3>
+                    <p class="text-gray-600">Capacitors serve several purposes in electronic circuits including storing electric charge, filtering noise from power supplies, blocking DC while allowing AC to pass (coupling), and timing elements in oscillator circuits.</p>
+                </div>
+                
+                <div class="question bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-bold mb-2 text-dark">What is the difference between RAM and ROM?</h3>
+                    <p class="text-gray-600">RAM (Random Access Memory) is volatile memory that temporarily stores data for quick access by the processor. ROM (Read Only Memory) is non-volatile memory that permanently stores firmware and system boot instructions.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="text-primary font-bold hover:underline">View All Interview Questions <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
 
-</div>
-</div>
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated with Electronics Trends</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for the latest tutorials, component reviews, and project ideas.</p>
+            
+            <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-dark focus:outline-none focus:ring-2 focus:ring-accent">
+                <button class="bg-accent px-6 py-3 rounded-lg font-bold hover:bg-amber-600 transition">Subscribe</button>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Electronics Learning Hub</h3>
+                    <p class="text-gray-400">Making electronics accessible to everyone through quality education and resources.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Learn</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Components</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Circuits</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Microcontrollers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Datasheets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tools</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Calculator</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Forum</a></li>
+                        <li class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Electronics Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<div class="modal" id="modal">
-<div class="modal-content">
-<h2 id="modal-title"></h2>
-<img id="modal-img" src="" alt="">
-<p id="modal-text"></p>
-<button class="close-btn" onclick="closeModal()">Close</button>
-</div>
-</div>
-
-<script>
-function showModal(title,text,imgSrc){
-document.getElementById('modal-title').innerText=title;
-document.getElementById('modal-text').innerText=text.replace(/\\n/g,'\n\n');
-const modalImg=document.getElementById('modal-img');
-if(imgSrc){ modalImg.src=imgSrc; modalImg.style.display='block'; }else{ modalImg.style.display='none'; }
-document.getElementById('modal').style.display='flex';
-}
-function closeModal(){document.getElementById('modal').style.display='none';}
-function toggleDarkMode(){document.body.classList.toggle('dark');}
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('minimized');}
-function showPage(pageId){
-document.querySelectorAll('.page').forEach(p=>p.style.display='none');
-document.getElementById(pageId).style.display='block';
-}
-</script>
-
+    <script>
+        // Tab functionality for microcontroller section
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Update active button
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-primary', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-dark');
+                    });
+                    button.classList.add('active', 'bg-primary', 'text-white');
+                    button.classList.remove('bg-gray-200', 'text-dark');
+                    
+                    // Update active content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
